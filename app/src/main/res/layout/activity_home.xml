@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="org.sopt.sample.presentation.ProfileViewModel" />
     </data>
 
     <ScrollView
@@ -19,7 +22,6 @@
 
             <TextView
                 android:id="@+id/title"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/spacingBase"
@@ -72,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
                     android:fontFamily="@font/suit_b"
+                    android:text="@{viewModel.user.name}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/typographyTitle"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,11 +83,12 @@
                     tools:text="최영진" />
 
                 <TextView
-                    android:id="@+id/email"
+                    android:id="@+id/id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingMicro"
                     android:fontFamily="@font/montserrat_r"
+                    android:text="@{viewModel.user.id}"
                     android:textColor="@color/gray_300"
                     android:textSize="@dimen/typographyDetail"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +137,7 @@
                     style="@style/Widget.Description.Bold.Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.user == null ? `0` : Integer.toString(viewModel.user.age)}"
                     app:layout_constraintStart_toEndOf="@id/age"
                     app:layout_constraintTop_toTopOf="@id/age"
                     tools:text="24" />
@@ -151,6 +156,7 @@
                     style="@style/Widget.Description.Bold.Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.mbti.toString()}"
                     app:layout_constraintStart_toEndOf="@id/mbti"
                     app:layout_constraintTop_toTopOf="@id/mbti"
                     tools:text="ISFP" />
@@ -168,6 +174,7 @@
                     style="@style/Widget.Description.Bold.Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{context.getString(viewModel.user.part.strRes)}"
                     app:layout_constraintStart_toEndOf="@id/part"
                     app:layout_constraintTop_toTopOf="@id/part"
                     tools:text="Android" />
@@ -203,6 +210,7 @@
                     style="@style/Widget.Description.Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.university}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/education_divider"
                     tools:text="성신여대" />
@@ -211,6 +219,7 @@
                     style="@style/Widget.Description.Bold.Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.major}"
                     app:layout_constraintStart_toEndOf="@id/university"
                     app:layout_constraintTop_toTopOf="@id/university"
                     tools:text="컴퓨터공학과" />
