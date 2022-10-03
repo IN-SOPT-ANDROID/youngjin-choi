@@ -1,6 +1,7 @@
 package org.sopt.sample.presentation
 
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
@@ -17,6 +18,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        initLayout()
+
         /* TODO delete
             [필수과제] 로그인 화면에서 입력된 정보 전달 받기, 2주차 과제 시 해당 주석은 삭제될 예정 */
 //        intent.getBundleExtra(ARG_USER_BUNDLE)?.let {
@@ -28,6 +31,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 //
 //            userInfo?.let { viewModel.setUserInfo(it) }
 //        }
+    }
+
+    private fun initLayout() {
+        binding.github.movementMethod = LinkMovementMethod.getInstance()
+        binding.blog.movementMethod = LinkMovementMethod.getInstance()
     }
 
     // TODO delete
