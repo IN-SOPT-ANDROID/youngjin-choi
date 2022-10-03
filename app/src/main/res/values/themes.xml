@@ -36,6 +36,11 @@
         <item name="android:textAppearance">@style/Widget.RoundButton.TextAppearance</item>
     </style>
 
+    <style name="Widget.Navigation.Button.Style" parent="">
+        <item name="android:padding">@dimen/spacingBase</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
     <!-- TextAppearance -->
     <style name="Widget.TextView.Label.TextAppearance" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
@@ -52,6 +57,12 @@
     <style name="Widget.RoundButton.TextAppearance" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
         <item name="android:textColor">@color/selector_button_text_color</item>
+        <item name="android:fontFamily">@font/suit_sb</item>
+    </style>
+
+    <style name="Widget.ToolbarTitle.TextAppearance" parent="">
+        <item name="android:textSize">@dimen/typographyBase</item>
+        <item name="android:textColor">@color/gray_500</item>
         <item name="android:fontFamily">@font/suit_sb</item>
     </style>
 </resources>
