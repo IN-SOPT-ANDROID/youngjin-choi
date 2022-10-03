@@ -18,11 +18,11 @@ class SignViewModel : ViewModel() {
     val isCompletedSignIn: LiveData<Boolean> get() = _isCompletedSignIn
 
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
-        addSourceList(id, password, name) { checkValidLoginInput() }
+        addSourceList(id, password, name) { checkValidSignInput() }
     }
 
-    private fun checkValidLoginInput(): Boolean {
-        if (id.value.isNullOrBlank() || id.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
+    private fun checkValidSignInput(): Boolean {
+        if (name.value.isNullOrBlank() || id.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
         return id.value!!.length in 6..10 && password.value!!.length in 8..12
     }
 
