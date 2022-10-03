@@ -14,7 +14,6 @@ import org.sopt.sample.presentation.HomeActivity
 import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
-import org.sopt.sample.util.safeLet
 
 class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -40,7 +39,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
                 val userInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     data.getSerializableExtra(ARG_USER_INFO, UserInfo::class.java)
                 } else {
-                    data.getSerializableExtra(ARG_USER_INFO) as UserInfo
+                    data.getSerializableExtra(ARG_USER_INFO) as? UserInfo
                 }
 
                 userInfo?.let {
@@ -72,11 +71,20 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     }
 
     private fun moveToHome() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        val intent = Intent(this, HomeActivity::class.java).apply {
+            Bundle().apply {
+                putSerializable(ARG_USER_INFO, viewModel.userInput)
+            }.also {
+                putExtra(ARG_USER_BUNDLE, it)
+            }
+        }
+
+        startActivity(intent)
         finish()
     }
 
     companion object {
         const val ARG_USER_INFO = "userInfo"
+        const val ARG_USER_BUNDLE = "userBundle"
     }
 }

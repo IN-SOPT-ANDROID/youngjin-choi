@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.sample.presentation.types.Mbti
+import org.sopt.sample.presentation.types.MbtiType
 import org.sopt.sample.addSourceList
 import org.sopt.sample.presentation.model.UserInfo
 
@@ -12,7 +12,6 @@ class SignViewModel : ViewModel() {
     val id = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val name = MutableLiveData<String>()
-    val mbti = MutableLiveData<Mbti>()
 
     var userInput: UserInfo? = null
 

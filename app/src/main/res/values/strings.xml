@@ -31,4 +31,11 @@
     <string name="profile_info_github"><a href="https://github.com/youngjinc"><font color="#474747"><b><u>GitHub</u></b></font></a></string>
     <string name="profile_info_blog"><a href="https://velog.io/@zini"><font color="#474747"><b><u>Blog</u></b></font></a></string>
 
+    <!-- Part -->
+    <string name="part_aos">Android</string>
+    <string name="part_ios">IOS</string>
+    <string name="part_web">Web</string>
+    <string name="part_server">Server</string>
+    <string name="part_design">Design</string>
+    <string name="part_plan">Plan</string>
 </resources>
