@@ -13,4 +13,5 @@
     <string name="sign_password_hint">비밀번호를 입력해 주세요.</string>
     <string name="sign_mbti_label">mbti</string>
     <string name="sign_mbti_hint">mbti를 입력해 주세요.</string>
+    <string name="sign_up_complete_snackbar_message">회원가입을 완료했어요!</string>
 </resources>

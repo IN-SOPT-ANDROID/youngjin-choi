@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
+import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.safeLet
 
 class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
@@ -31,6 +32,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
                     data.getStringExtra(ARG_USER_PASSWORD)) { id, password ->
                     viewModel.setSignInfo(id, password)
                 }
+
+                binding.root.showSnackbar(getString(R.string.sign_up_complete_snackbar_message))
             }
     }
 
