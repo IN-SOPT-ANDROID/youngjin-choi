@@ -4,11 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.sample.presentation.types.MbtiType
+import dagger.hilt.android.lifecycle.HiltViewModel
 import org.sopt.sample.addSourceList
 import org.sopt.sample.presentation.model.UserInfo
+import org.sopt.sample.util.InSoptSharedPreference
+import javax.inject.Inject
 
-class SignViewModel : ViewModel() {
+@HiltViewModel
+class SignViewModel @Inject constructor(val inSoptSharedPreference: InSoptSharedPreference) :
+    ViewModel() {
     val id = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val name = MutableLiveData<String>()
@@ -29,6 +33,7 @@ class SignViewModel : ViewModel() {
 
     fun signIn() {
         (id.value == userInput?.id && password.value == userInput?.password).let { isValid ->
+            if (isValid && userInput != null) inSoptSharedPreference.setUserInfo(userInput!!)
             _isCompletedSignIn.value = isValid
         }
     }

@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
@@ -15,6 +16,7 @@ import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
 
+@AndroidEntryPoint
 class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val viewModel: SignViewModel by viewModels()
@@ -71,15 +73,20 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     }
 
     private fun moveToHome() {
-        val intent = Intent(this, HomeActivity::class.java).apply {
-            Bundle().apply {
-                putSerializable(ARG_USER_INFO, viewModel.userInput)
-            }.also {
-                putExtra(ARG_USER_BUNDLE, it)
-            }
-        }
+        /* TODO delete
+          [필수과제] 로그인 화면에서 입력된 정보 전달 받기, 2주차 과제 시 해당 주석은 삭제될 예정 */
 
-        startActivity(intent)
+//        val intent = Intent(this, HomeActivity::class.java).apply {
+//            Bundle().apply {
+//                putSerializable(ARG_USER_INFO, viewModel.userInput)
+//            }.also {
+//                putExtra(ARG_USER_BUNDLE, it)
+//            }
+//        }
+//
+//        startActivity(intent)
+
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 
