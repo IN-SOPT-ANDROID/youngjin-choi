@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.sopt.sample.presentation.types.Mbti
 import org.sopt.sample.addSourceList
+import org.sopt.sample.presentation.model.UserInfo
 
 class SignViewModel : ViewModel() {
     val id = MutableLiveData<String>()
@@ -13,7 +14,8 @@ class SignViewModel : ViewModel() {
     val name = MutableLiveData<String>()
     val mbti = MutableLiveData<Mbti>()
 
-    var signInfo: SignInfo? = null
+    var userInput: UserInfo? = null
+
     private var _isCompletedSignIn = MutableLiveData<Boolean>()
     val isCompletedSignIn: LiveData<Boolean> get() = _isCompletedSignIn
 
@@ -27,17 +29,12 @@ class SignViewModel : ViewModel() {
     }
 
     fun signIn() {
-        (id.value == signInfo?.id && password.value == signInfo?.password).let { isValid ->
+        (id.value == userInput?.id && password.value == userInput?.password).let { isValid ->
             _isCompletedSignIn.value = isValid
         }
     }
 
-    fun setSignInfo(id: String, password: String) {
-        signInfo = SignInfo(id, password)
+    fun setUserInfo(userInput: UserInfo) {
+        this.userInput = userInput
     }
-
-    data class SignInfo(
-        val id: String,
-        val password: String,
-    )
 }

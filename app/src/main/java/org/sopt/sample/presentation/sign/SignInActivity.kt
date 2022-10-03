@@ -2,6 +2,7 @@ package org.sopt.sample.presentation.sign
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -10,6 +11,7 @@ import org.sopt.sample.R
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
 import org.sopt.sample.presentation.HomeActivity
+import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
 import org.sopt.sample.util.safeLet
@@ -35,12 +37,16 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
                 if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
                 val data = result.data ?: return@registerForActivityResult
 
-                safeLet(data.getStringExtra(ARG_USER_ID),
-                    data.getStringExtra(ARG_USER_PASSWORD)) { id, password ->
-                    viewModel.setSignInfo(id, password)
+                val userInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    data.getSerializableExtra(ARG_USER_INFO, UserInfo::class.java)
+                } else {
+                    data.getSerializableExtra(ARG_USER_INFO) as UserInfo
                 }
 
-                binding.root.showSnackbar(getString(R.string.sign_up_success_snackbar_message))
+                userInfo?.let {
+                    viewModel.setUserInfo(it)
+                    binding.root.showSnackbar(getString(R.string.sign_up_success_snackbar_message))
+                }
             }
     }
 
@@ -71,7 +77,6 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     }
 
     companion object {
-        const val ARG_USER_ID = "userId"
-        const val ARG_USER_PASSWORD = "userPassword"
+        const val ARG_USER_INFO = "userInfo"
     }
 }

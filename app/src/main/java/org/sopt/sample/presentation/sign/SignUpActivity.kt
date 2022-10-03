@@ -6,6 +6,9 @@ import androidx.activity.viewModels
 import org.sopt.sample.R
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignUpBinding
+import org.sopt.sample.presentation.model.UserInfo
+import org.sopt.sample.presentation.types.Mbti
+import org.sopt.sample.util.safeValueOf
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
     private val viewModel: SignViewModel by viewModels()
@@ -31,14 +34,20 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
 
     private fun moveToSignIn() {
         val intent = Intent(this, SignInActivity::class.java)
-        intent.putExtra(ARG_USER_ID, viewModel.id.value)
-        intent.putExtra(ARG_USER_PASSWORD, viewModel.password.value)
+        with(binding) {
+            intent.putExtra(
+                ARG_USER_INFO,
+                UserInfo(etId.toString(),
+                    etPassword.toString(),
+                    etName.toString(),
+                    safeValueOf<Mbti>(etMbti.toString().uppercase()))
+            )
+        }
         setResult(RESULT_OK, intent)
         finish()
     }
 
     companion object {
-        const val ARG_USER_ID = "userId"
-        const val ARG_USER_PASSWORD = "userPassword"
+        const val ARG_USER_INFO = "userInfo"
     }
 }
