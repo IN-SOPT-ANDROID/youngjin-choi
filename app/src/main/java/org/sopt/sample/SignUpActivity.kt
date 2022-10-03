@@ -1,5 +1,6 @@
 package org.sopt.sample
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import org.sopt.sample.base.BaseActivity
@@ -21,5 +22,22 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
         binding.back.setOnClickListener {
             finish()
         }
+
+        binding.btnSignUp.setOnClickListener {
+            moveToSignIn()
+        }
+    }
+
+    private fun moveToSignIn() {
+        val intent = Intent(this, SignInActivity::class.java)
+        intent.putExtra(ARG_USER_ID, viewModel.id.value)
+        intent.putExtra(ARG_USER_PASSWORD, viewModel.password.value)
+        setResult(RESULT_OK, intent)
+        finish()
+    }
+
+    companion object {
+        const val ARG_USER_ID = "userId"
+        const val ARG_USER_PASSWORD = "userPassword"
     }
 }
