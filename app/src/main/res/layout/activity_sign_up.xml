@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="org.sopt.sample.SignViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +52,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guide_start"
@@ -84,6 +87,7 @@
                     android:layout_marginTop="@dimen/spacingSmall"
                     android:hint="@string/sign_name_hint"
                     android:maxLines="1"
+                    android:text="@={viewModel.name}"
                     app:layout_constraintEnd_toEndOf="@id/guide_end"
                     app:layout_constraintStart_toStartOf="@id/guide_start"
                     app:layout_constraintTop_toBottomOf="@id/tv_name_label" />
@@ -107,6 +111,7 @@
                     android:layout_marginTop="@dimen/spacingSmall"
                     android:hint="@string/sign_id_hint"
                     android:maxLines="1"
+                    android:text="@={viewModel.id}"
                     app:layout_constraintEnd_toEndOf="@id/guide_end"
                     app:layout_constraintStart_toStartOf="@id/guide_start"
                     app:layout_constraintTop_toBottomOf="@id/tv_id_label" />
@@ -130,6 +135,7 @@
                     android:hint="@string/sign_password_hint"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:text="@={viewModel.password}"
                     app:layout_constraintEnd_toEndOf="@id/guide_end"
                     app:layout_constraintStart_toStartOf="@id/guide_start"
                     app:layout_constraintTop_toBottomOf="@id/tv_password_label" />
@@ -167,6 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacingBase"
             android:layout_marginBottom="@dimen/spacingBase"
+            android:enabled="@{viewModel.isValidSignInput()}"
             android:text="@string/sign_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
