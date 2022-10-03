@@ -1,5 +1,6 @@
 package org.sopt.sample
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,10 @@ class SignViewModel : ViewModel() {
     val password = MutableLiveData<String>()
     val name = MutableLiveData<String>()
     val mbti = MutableLiveData<Mbti>()
+
     var signInfo: SignInfo? = null
+    private var _isCompletedSignIn = MutableLiveData<Boolean>()
+    val isCompletedSignIn: LiveData<Boolean> get() = _isCompletedSignIn
 
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
         addSourceList(id, password, name) { checkValidLoginInput() }
@@ -21,7 +25,9 @@ class SignViewModel : ViewModel() {
     }
 
     fun signIn() {
-        TODO("Not yet implemented")
+        (id.value == signInfo?.id && password.value == signInfo?.password).let { isValid ->
+            _isCompletedSignIn.value = isValid
+        }
     }
 
     fun setSignInfo(id: String, password: String) {

@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
 import org.sopt.sample.util.extensions.showSnackbar
+import org.sopt.sample.util.extensions.showToast
 import org.sopt.sample.util.safeLet
 
 class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
@@ -18,8 +19,12 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
         setSignUpResult()
         addListeners()
+        addObservers()
     }
 
     private fun setSignUpResult() {
@@ -33,7 +38,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
                     viewModel.setSignInfo(id, password)
                 }
 
-                binding.root.showSnackbar(getString(R.string.sign_up_complete_snackbar_message))
+                binding.root.showSnackbar(getString(R.string.sign_up_success_snackbar_message))
             }
     }
 
@@ -45,6 +50,22 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
         binding.btnSignUp.setOnClickListener {
             resultLauncher.launch(Intent(this, SignUpActivity::class.java))
         }
+    }
+
+    private fun addObservers() {
+        viewModel.isCompletedSignIn.observe(this) { isCompleted ->
+            if (isCompleted) {
+                showToast(getString(R.string.sign_in_success_toast_message))
+                moveToHome()
+            } else {
+                showToast(getString(R.string.sign_in_fail_toast_message))
+            }
+        }
+    }
+
+    private fun moveToHome() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     companion object {
