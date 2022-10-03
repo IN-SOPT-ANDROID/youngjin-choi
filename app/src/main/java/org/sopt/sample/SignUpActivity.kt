@@ -13,5 +13,13 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        addListeners()
+    }
+
+    private fun addListeners() {
+        binding.back.setOnClickListener {
+            finish()
+        }
     }
 }
