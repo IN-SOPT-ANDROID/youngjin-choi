@@ -1,11 +1,11 @@
 package org.sopt.sample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.sopt.sample.base.BaseActivity
+import org.sopt.sample.databinding.ActivitySignUpBinding
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
     }
 }
