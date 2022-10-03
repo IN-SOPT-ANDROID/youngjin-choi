@@ -13,4 +13,44 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Widget Style -->
+    <style name="Widget.EditText.Style" parent="">
+        <item name="android:background">@drawable/selector_edittext_background</item>
+        <item name="android:paddingVertical">@dimen/spacing16</item>
+        <item name="android:paddingHorizontal">@dimen/spacing12</item>
+        <item name="android:textAppearance">@style/Widget.EditText.TextAppearance</item>
+    </style>
+
+    <style name="Widget.Button.Style" parent="">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingVertical">@dimen/spacing16</item>
+    </style>
+
+    <style name="Widget.RoundButton.Style" parent="Widget.Button.Style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/selector_button_color</item>
+        <item name="android:background">@drawable/shape_border_radius_10</item>
+        <item name="android:textAppearance">@style/Widget.RoundButton.TextAppearance</item>
+    </style>
+
+    <!-- TextAppearance -->
+    <style name="Widget.TextView.Label.TextAppearance" parent="">
+        <item name="android:textSize">@dimen/typographyDescription</item>
+        <item name="android:textColor">@color/gray_400</item>
+        <item name="android:fontFamily">@font/suit_m</item>
+    </style>
+
+    <style name="Widget.EditText.TextAppearance" parent="">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray_400</item>
+        <item name="android:fontFamily">@font/suit_m</item>
+    </style>
+
+    <style name="Widget.RoundButton.TextAppearance" parent="">
+        <item name="android:textSize">@dimen/typographyDescription</item>
+        <item name="android:textColor">@color/selector_button_text_color</item>
+        <item name="android:fontFamily">@font/suit_sb</item>
+    </style>
 </resources>

@@ -23,5 +23,6 @@
     <dimen name="navigationHeightBase">56dp</dimen>
 
     <!-- Radius -->
+    <dimen name="radius10">10dp</dimen>
     <dimen name="radiusBase">16dp</dimen>
 </resources>

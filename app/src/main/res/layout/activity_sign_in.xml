@@ -29,7 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacingLarge"
+            android:fontFamily="@font/montserrat_b"
             android:text="IN SOPT"
+            android:textColor="@color/gray_700"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,12 +42,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacingLarge"
             android:text="아이디"
+            android:textAppearance="@style/Widget.TextView.Label.TextAppearance"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <EditText
             android:id="@+id/et_id"
+            style="@style/Widget.EditText.Style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacingSmall"
@@ -61,11 +65,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacingBase"
             android:text="비밀번호"
+            android:textAppearance="@style/Widget.TextView.Label.TextAppearance"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toBottomOf="@id/et_id" />
 
         <EditText
             android:id="@+id/et_password"
+            style="@style/Widget.EditText.Style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacingSmall"
@@ -78,6 +84,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_in"
+            style="@style/Widget.RoundButton.Style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacingSmall"
@@ -88,6 +95,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
+            style="@style/Widget.RoundButton.Style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacingBase"
