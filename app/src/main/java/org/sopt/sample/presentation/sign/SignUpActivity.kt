@@ -1,8 +1,9 @@
-package org.sopt.sample
+package org.sopt.sample.presentation.sign
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import org.sopt.sample.R
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignUpBinding
 

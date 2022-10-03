@@ -1,9 +1,11 @@
-package org.sopt.sample
+package org.sopt.sample.presentation.sign
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.sopt.sample.presentation.types.Mbti
+import org.sopt.sample.addSourceList
 
 class SignViewModel : ViewModel() {
     val id = MutableLiveData<String>()

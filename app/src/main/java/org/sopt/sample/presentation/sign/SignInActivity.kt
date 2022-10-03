@@ -1,4 +1,4 @@
-package org.sopt.sample
+package org.sopt.sample.presentation.sign
 
 import android.app.Activity
 import android.content.Intent
@@ -6,8 +6,10 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import org.sopt.sample.R
 import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
+import org.sopt.sample.presentation.HomeActivity
 import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
 import org.sopt.sample.util.safeLet

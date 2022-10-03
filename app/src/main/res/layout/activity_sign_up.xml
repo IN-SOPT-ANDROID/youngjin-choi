@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="org.sopt.sample.SignViewModel" />
+            type="org.sopt.sample.presentation.sign.SignViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SignInActivity">
+        tools:context=".presentation.sign.SignInActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
