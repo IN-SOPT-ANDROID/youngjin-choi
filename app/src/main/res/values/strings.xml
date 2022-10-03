@@ -2,6 +2,7 @@
     <string name="app_name">INSOPTAndroidPractice</string>
     <string name="in_sopt">IN SOPT</string>
 
+    <!-- Sign -->
     <string name="sign_in">로그인하기</string>
     <string name="sign_up">가입하기</string>
 
@@ -16,4 +17,18 @@
     <string name="sign_up_success_snackbar_message">회원가입을 완료했어요!</string>
     <string name="sign_in_success_toast_message">로그인을 완료했어요!</string>
     <string name="sign_in_fail_toast_message">앗, 아이디와 패스워드를 다시 확인해 주세요.</string>
+
+    <!-- Profile -->
+    <string name="profile_info">내 정보</string>
+    <string name="profile_info_age">Age</string>
+    <string name="profile_info_mbti">MBTI</string>
+    <string name="profile_info_part">Part</string>
+
+    <string name="profile_education">학력</string>
+    <string name="profile_info_major">%s&#160;&#160;&#160;&#160;<b>%s</b></string>
+
+    <string name="profile_site">웹사이트</string>
+    <string name="profile_info_github"><a href="https://github.com/youngjinc"><font color="#474747"><b><u>GitHub</u></b></font></a></string>
+    <string name="profile_info_blog"><a href="https://velog.io/@zini"><font color="#474747"><b><u>Blog</u></b></font></a></string>
+
 </resources>

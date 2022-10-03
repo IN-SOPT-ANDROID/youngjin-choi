@@ -41,6 +41,19 @@
         <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
+    <!-- Divider -->
+    <style name="Widget.Divider.Style" parent="">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gray_200</item>
+        <item name="android:layout_marginTop">@dimen/spacing10</item>
+    </style>
+
+    <!-- CircleImageView -->
+    <style name="Widget.CircleImageView.Half" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <!-- TextAppearance -->
     <style name="Widget.TextView.Label.TextAppearance" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
@@ -63,6 +76,35 @@
     <style name="Widget.ToolbarTitle.TextAppearance" parent="">
         <item name="android:textSize">@dimen/typographyBase</item>
         <item name="android:textColor">@color/gray_500</item>
+        <item name="android:fontFamily">@font/suit_sb</item>
+    </style>
+
+    <style name="Widget.Title.Basic.TextAppearance" parent="">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray_700</item>
+        <item name="android:fontFamily">@font/suit_sb</item>
+    </style>
+
+    <style name="Widget.Title.Large.TextAppearance" parent="">
+        <item name="android:fontFamily">@font/montserrat_b</item>
+        <item name="android:textColor">@color/gray_700</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="Widget.Description.Style" parent="">
+        <item name="android:layout_marginTop">@dimen/spacingBase</item>
+        <item name="android:textAppearance">@style/Widget.Description.TextAppearance</item>
+    </style>
+
+    <style name="Widget.Description.TextAppearance" parent="">
+        <item name="android:textSize">@dimen/typographyDescription</item>
+        <item name="android:textColor">@color/gray_500</item>
+        <item name="android:fontFamily">@font/suit_r</item>
+    </style>
+
+    <style name="Widget.Description.Bold.Style" parent="">
+        <item name="android:layout_marginStart">@dimen/spacing12</item>
+        <item name="android:textAppearance">@style/Widget.Description.TextAppearance</item>
         <item name="android:fontFamily">@font/suit_sb</item>
     </style>
 </resources>
