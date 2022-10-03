@@ -91,28 +91,32 @@
                 app:layout_constraintStart_toStartOf="@id/guide_start"
                 app:layout_constraintTop_toBottomOf="@id/tv_password_label" />
 
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacingBase"
+                app:constraint_referenced_ids="btn_sign_in,btn_sign_up"
+                app:flow_horizontalGap="@dimen/spacing12"
+                app:flow_maxElementsWrap="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guide_end"
+                app:layout_constraintStart_toStartOf="@id/guide_start" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_in"
                 style="@style/Widget.RoundButton.Style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacingSmall"
                 android:enabled="@{viewModel.id.length() > 0 &amp;&amp; viewModel.password.length() > 0}"
-                android:text="@string/sign_in"
-                app:layout_constraintBottom_toTopOf="@id/btn_sign_up"
-                app:layout_constraintEnd_toEndOf="@id/guide_end"
-                app:layout_constraintStart_toStartOf="@id/guide_start" />
+                android:text="@string/sign_in" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_up"
                 style="@style/Widget.RoundButton.Style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacingBase"
-                android:text="@string/sign_up"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/guide_end"
-                app:layout_constraintStart_toStartOf="@id/guide_start" />
+                android:text="@string/sign_up" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
