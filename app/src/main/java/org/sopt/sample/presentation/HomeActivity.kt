@@ -34,8 +34,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     }
 
     private fun initLayout() {
-        binding.github.movementMethod = LinkMovementMethod.getInstance()
-        binding.blog.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvGithub.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvBlog.movementMethod = LinkMovementMethod.getInstance()
     }
 
     // TODO delete

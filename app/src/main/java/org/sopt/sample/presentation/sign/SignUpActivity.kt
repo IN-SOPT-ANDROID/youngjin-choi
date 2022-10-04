@@ -25,7 +25,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sig
     }
 
     private fun addListeners() {
-        binding.back.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             finish()
         }
 
