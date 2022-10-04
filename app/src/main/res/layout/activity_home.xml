@@ -156,7 +156,7 @@
                     style="@style/Widget.Description.Bold.Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.user.mbti.toString()}"
+                    android:text="@{viewModel.user.mbti.name()}"
                     app:layout_constraintStart_toEndOf="@id/tv_mbti"
                     app:layout_constraintTop_toTopOf="@id/tv_mbti"
                     tools:text="ISFP" />
