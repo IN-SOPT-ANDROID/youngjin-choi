@@ -28,7 +28,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     private fun addListeners() {
         viewModel.isSignedUser.observe(this) { isSigned ->
-            lifecycleScope.launch(Dispatchers.Main) {
+            lifecycleScope.launch {
                 job = launch {
                     delay(2000)
                     moveToNext(isSigned)
