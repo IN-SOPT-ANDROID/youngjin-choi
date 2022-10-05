@@ -25,8 +25,4 @@ class SplashViewModel @Inject constructor(
             _isSignedUser.value = inSoptSharedPreference.getUserInfo() != null
         }
     }
-
-    companion object {
-        private const val TAG = "SplashViewModel"
-    }
 }
