@@ -3,8 +3,8 @@
 <!-- <details>
 <summary>week1</summary> -->
 
-# Week1
-
+# Week1 - Android UI 구현 기초
+<img src="https://user-images.githubusercontent.com/48701368/193726884-fdbec67c-75ea-438d-b77c-008cd4e22b62.gif" width="360" />
 
 # Lifecycle callbacks
 
