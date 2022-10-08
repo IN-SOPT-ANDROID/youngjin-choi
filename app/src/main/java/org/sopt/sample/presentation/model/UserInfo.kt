@@ -1,9 +1,11 @@
 package org.sopt.sample.presentation.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import org.sopt.sample.presentation.types.MbtiType
 import org.sopt.sample.presentation.types.SoptPartType
-import java.io.Serializable
 
+@Parcelize
 data class UserInfo(
     val id: String,
     val password: String,
@@ -13,4 +15,4 @@ data class UserInfo(
     val part: SoptPartType = SoptPartType.AOS,
     val university: String = "성신여대",
     val major: String = "컴퓨터공학과"
-) : Serializable
+) : Parcelable

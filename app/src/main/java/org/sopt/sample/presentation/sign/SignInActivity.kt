@@ -39,9 +39,9 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
                 val data = result.data ?: return@registerForActivityResult
 
                 val userInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    data.getSerializableExtra(ARG_USER_INFO, UserInfo::class.java)
+                    data.getParcelableExtra(ARG_USER_INFO, UserInfo::class.java)
                 } else {
-                    data.getSerializableExtra(ARG_USER_INFO) as? UserInfo
+                    data.getParcelableExtra(ARG_USER_INFO)
                 }
 
                 userInfo?.let {
@@ -78,7 +78,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
 
 //        val intent = Intent(this, HomeActivity::class.java).apply {
 //            Bundle().apply {
-//                putSerializable(ARG_USER_INFO, viewModel.userInput)
+//                putParcelable(ARG_USER_INFO, viewModel.userInput)
 //            }.also {
 //                putExtra(ARG_USER_BUNDLE, it)
 //            }
