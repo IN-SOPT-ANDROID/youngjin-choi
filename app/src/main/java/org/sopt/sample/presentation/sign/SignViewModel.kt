@@ -5,9 +5,10 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.sopt.sample.addSourceList
 import org.sopt.sample.presentation.model.UserInfo
+import org.sopt.sample.util.Event
 import org.sopt.sample.util.InSoptSharedPreference
+import org.sopt.sample.util.extensions.addSourceList
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,8 +20,8 @@ class SignViewModel @Inject constructor(val inSoptSharedPreference: InSoptShared
 
     var userInput: UserInfo? = null
 
-    private var _isCompletedSignIn = MutableLiveData<Boolean>()
-    val isCompletedSignIn: LiveData<Boolean> get() = _isCompletedSignIn
+    private var _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
+    val isCompletedSignIn: LiveData<Event<Boolean>> get() = _isCompletedSignIn
 
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
         addSourceList(id, password, name) { checkValidSignInput() }
@@ -34,7 +35,7 @@ class SignViewModel @Inject constructor(val inSoptSharedPreference: InSoptShared
     fun signIn() {
         (id.value == userInput?.id && password.value == userInput?.password).let { isValid ->
             if (isValid && userInput != null) inSoptSharedPreference.setUserInfo(userInput!!)
-            _isCompletedSignIn.value = isValid
+            _isCompletedSignIn.value = Event(isValid)
         }
     }
 

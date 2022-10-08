@@ -13,6 +13,7 @@ import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
 import org.sopt.sample.presentation.HomeActivity
 import org.sopt.sample.presentation.model.UserInfo
+import org.sopt.sample.util.EventObserver
 import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
 
@@ -62,14 +63,14 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
     }
 
     private fun addObservers() {
-        viewModel.isCompletedSignIn.observe(this) { isCompleted ->
+        viewModel.isCompletedSignIn.observe(this, EventObserver { isCompleted ->
             if (isCompleted) {
                 showToast(getString(R.string.sign_in_success_toast_message))
                 moveToHome()
             } else {
                 showToast(getString(R.string.sign_in_fail_toast_message))
             }
-        }
+        })
     }
 
     private fun moveToHome() {
