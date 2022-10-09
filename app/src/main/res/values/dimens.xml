@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacingMicro">4dp</dimen>
+    <dimen name="spacingSmall">8dp</dimen>
+    <dimen name="spacingBase">20dp</dimen>
+    <dimen name="spacingMedium">24dp</dimen>
+    <dimen name="spacingLarge">36dp</dimen>
+
+    <dimen name="spacing10">10dp</dimen>
+    <dimen name="spacing12">12dp</dimen>
+    <dimen name="spacing16">16dp</dimen>
+    <dimen name="spacing28">28dp</dimen>
+
+    <!-- Typography  -->
+    <dimen name="typographyDetail">12sp</dimen>
+    <dimen name="typographyDescription">14sp</dimen>
+    <dimen name="typographyBase">16sp</dimen>
+    <dimen name="typographyTitle">18sp</dimen>
+
+    <!-- Widget -->
+    <dimen name="iconSizeBase">24dp</dimen>
+    <dimen name="buttonHeightBase">32dp</dimen>
+    <dimen name="navigationHeightBase">56dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius10">10dp</dimen>
+    <dimen name="radiusBase">16dp</dimen>
+</resources>

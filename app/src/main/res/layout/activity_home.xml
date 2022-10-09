@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.sopt.sample.presentation.ProfileViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="120dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/spacingBase"
+                android:layout_marginStart="@dimen/spacingBase"
+                android:text="@string/in_sopt"
+                android:textAppearance="@style/TextAppearance.Title.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/spacingBase" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/spacingBase" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacingBase"
+                android:background="@drawable/shape_border_radius_16"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="@dimen/spacingBase"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/snowball"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingBase"
+                    android:fontFamily="@font/suit_b"
+                    android:text="@{viewModel.user.name}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/typographyTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_profile"
+                    tools:text="최영진" />
+
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingMicro"
+                    android:fontFamily="@font/montserrat_r"
+                    android:text="@{viewModel.user.id}"
+                    android:textColor="@color/gray_300"
+                    android:textSize="@dimen/typographyDetail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name"
+                    tools:text="\@oznnni" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacingLarge"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/layout_profile">
+
+                <TextView
+                    android:id="@+id/tv_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_info"
+                    android:textAppearance="@style/TextAppearance.Title.Basic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider_info"
+                    style="@style/Style.Divider"
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_info" />
+
+                <TextView
+                    android:id="@+id/tv_age"
+                    style="@style/Style.Description.Basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_info_age"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_info" />
+
+                <TextView
+                    android:id="@+id/tv_user_age"
+                    style="@style/Style.Description.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user == null ? `0` : Integer.toString(viewModel.user.age)}"
+                    app:layout_constraintStart_toEndOf="@id/tv_age"
+                    app:layout_constraintTop_toTopOf="@id/tv_age"
+                    tools:text="24" />
+
+                <TextView
+                    android:id="@+id/tv_mbti"
+                    style="@style/Style.Description.Basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_info_mbti"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_age" />
+
+                <TextView
+                    android:id="@+id/tv_user_mbti"
+                    style="@style/Style.Description.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.mbti.name()}"
+                    app:layout_constraintStart_toEndOf="@id/tv_mbti"
+                    app:layout_constraintTop_toTopOf="@id/tv_mbti"
+                    tools:text="ISFP" />
+
+                <TextView
+                    android:id="@+id/tv_part"
+                    style="@style/Style.Description.Basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_info_part"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+
+                <TextView
+                    style="@style/Style.Description.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{context.getString(viewModel.user.part.strRes)}"
+                    app:layout_constraintStart_toEndOf="@id/tv_part"
+                    app:layout_constraintTop_toTopOf="@id/tv_part"
+                    tools:text="Android" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_education"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/layout_info">
+
+                <TextView
+                    android:id="@+id/tv_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_education"
+                    android:textAppearance="@style/TextAppearance.Title.Basic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider_education"
+                    style="@style/Style.Divider"
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_education" />
+
+                <TextView
+                    android:id="@+id/tv_university"
+                    style="@style/Style.Description.Basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.university}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_education"
+                    tools:text="성신여대" />
+
+                <TextView
+                    style="@style/Style.Description.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.major}"
+                    app:layout_constraintStart_toEndOf="@id/tv_university"
+                    app:layout_constraintTop_toTopOf="@id/tv_university"
+                    tools:text="컴퓨터공학과" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_web_site"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/layout_education">
+
+                <TextView
+                    android:id="@+id/site"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_site"
+                    android:textAppearance="@style/TextAppearance.Title.Basic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider_site"
+                    style="@style/Style.Divider"
+                    android:layout_width="match_parent"
+                    app:layout_constraintStart_toStartOf="@id/site"
+                    app:layout_constraintTop_toBottomOf="@id/site" />
+
+                <TextView
+                    android:id="@+id/tv_github"
+                    style="@style/Style.Description.Basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_info_github"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_site" />
+
+                <TextView
+                    android:id="@+id/tv_blog"
+                    style="@style/Style.Description.Basic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_info_blog"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_github" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
