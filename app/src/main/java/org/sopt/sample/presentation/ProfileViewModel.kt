@@ -7,7 +7,7 @@ import org.sopt.sample.util.InSoptSharedPreference
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(val inSoptSharedPreference: InSoptSharedPreference) :
+class ProfileViewModel @Inject constructor(private val inSoptSharedPreference: InSoptSharedPreference) :
     ViewModel() {
     var user: UserInfo? = null
 
