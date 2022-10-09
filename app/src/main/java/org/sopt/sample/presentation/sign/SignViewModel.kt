@@ -12,7 +12,7 @@ import org.sopt.sample.util.extensions.addSourceList
 import javax.inject.Inject
 
 @HiltViewModel
-class SignViewModel @Inject constructor(val inSoptSharedPreference: InSoptSharedPreference) :
+class SignViewModel @Inject constructor(private val inSoptSharedPreference: InSoptSharedPreference) :
     ViewModel() {
     val id = MutableLiveData<String>()
     val password = MutableLiveData<String>()
