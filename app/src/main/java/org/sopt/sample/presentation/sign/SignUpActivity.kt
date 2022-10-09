@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
-import org.sopt.sample.base.BaseActivity
+import org.sopt.sample.base.BindingActivity
 import org.sopt.sample.databinding.ActivitySignUpBinding
 import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.presentation.types.MbtiType
 import org.sopt.sample.util.safeValueOf
 
 @AndroidEntryPoint
-class SignUpActivity : BaseActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
+class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
     private val viewModel: SignViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

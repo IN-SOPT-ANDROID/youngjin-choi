@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
-import org.sopt.sample.base.BaseActivity
+import org.sopt.sample.base.BindingActivity
 import org.sopt.sample.databinding.ActivitySignInBinding
 import org.sopt.sample.presentation.HomeActivity
 import org.sopt.sample.presentation.model.UserInfo
@@ -18,7 +18,7 @@ import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
 
 @AndroidEntryPoint
-class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
+class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val viewModel: SignViewModel by viewModels()
 

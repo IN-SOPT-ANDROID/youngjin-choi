@@ -1,17 +1,15 @@
 package org.sopt.sample.presentation
 
-import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
-import org.sopt.sample.base.BaseActivity
+import org.sopt.sample.base.BindingActivity
 import org.sopt.sample.databinding.ActivityHomeBinding
-import org.sopt.sample.presentation.model.UserInfo
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
+class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
