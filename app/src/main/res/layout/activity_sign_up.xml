@@ -23,7 +23,7 @@
 
             <ImageButton
                 android:id="@+id/btn_back"
-                style="@style/Widget.Navigation.Button.Style"
+                style="@style/Style.NavigationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_back"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/Widget.ToolbarTitle.TextAppearance"
+                style="@style/TextAppearance.Toolbar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
@@ -74,14 +74,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_name_label"
-                    android:textAppearance="@style/Widget.TextView.Label.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/et_name"
-                    style="@style/Widget.EditText.Style"
+                    style="@style/Style.EditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingSmall"
@@ -98,14 +98,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_id_label"
-                    android:textAppearance="@style/Widget.TextView.Label.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
                     app:layout_constraintTop_toBottomOf="@id/et_name" />
 
                 <EditText
                     android:id="@+id/et_id"
-                    style="@style/Widget.EditText.Style"
+                    style="@style/Style.EditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingSmall"
@@ -122,13 +122,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_password_label"
-                    android:textAppearance="@style/Widget.TextView.Label.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
                     app:layout_constraintTop_toBottomOf="@id/et_id" />
 
                 <EditText
                     android:id="@+id/et_password"
-                    style="@style/Widget.EditText.Style"
+                    style="@style/Style.EditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingSmall"
@@ -146,13 +146,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_mbti_label"
-                    android:textAppearance="@style/Widget.TextView.Label.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
                     app:layout_constraintTop_toBottomOf="@id/et_password" />
 
                 <EditText
                     android:id="@+id/et_mbti"
-                    style="@style/Widget.EditText.Style"
+                    style="@style/Style.EditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingSmall"
@@ -168,7 +168,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up"
-            style="@style/Widget.RoundButton.Style"
+            style="@style/Style.RoundButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacingBase"

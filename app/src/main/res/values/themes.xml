@@ -16,95 +16,95 @@
     </style>
 
     <!-- Widget Style -->
-    <style name="Widget.EditText.Style" parent="">
+    <style name="Style.EditText" parent="">
         <item name="android:background">@drawable/selector_edittext_background</item>
         <item name="android:paddingVertical">@dimen/spacing16</item>
         <item name="android:paddingHorizontal">@dimen/spacing12</item>
-        <item name="android:textAppearance">@style/Widget.EditText.TextAppearance</item>
+        <item name="android:textAppearance">@style/TextAppearance.EditText</item>
     </style>
 
-    <style name="Widget.Button.Style" parent="">
+    <style name="Style.Description.Bold" parent="">
+        <item name="android:layout_marginStart">@dimen/spacing12</item>
+        <item name="android:textAppearance">@style/TextAppearance.Description</item>
+        <item name="android:fontFamily">@font/suit_sb</item>
+    </style>
+
+    <style name="Style.Description.Basic" parent="">
+        <item name="android:layout_marginTop">@dimen/spacingBase</item>
+        <item name="android:textAppearance">@style/TextAppearance.Description</item>
+    </style>
+
+    <style name="Style.Button" parent="">
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:paddingVertical">@dimen/spacing16</item>
     </style>
 
-    <style name="Widget.RoundButton.Style" parent="Widget.Button.Style">
+    <style name="Style.RoundButton" parent="Style.Button">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/selector_button_color</item>
         <item name="android:background">@drawable/shape_border_radius_10</item>
-        <item name="android:textAppearance">@style/Widget.RoundButton.TextAppearance</item>
+        <item name="android:textAppearance">@style/TextAppearance.RoundButton</item>
     </style>
 
-    <style name="Widget.Navigation.Button.Style" parent="">
+    <style name="Style.NavigationButton" parent="">
         <item name="android:padding">@dimen/spacingBase</item>
         <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
     <!-- Divider -->
-    <style name="Widget.Divider.Style" parent="">
+    <style name="Style.Divider" parent="">
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/gray_200</item>
         <item name="android:layout_marginTop">@dimen/spacing10</item>
     </style>
 
     <!-- CircleImageView -->
-    <style name="Widget.CircleImageView.Half" parent="">
+    <style name="Style.CircleImageView.Half" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
 
     <!-- TextAppearance -->
-    <style name="Widget.TextView.Label.TextAppearance" parent="">
+    <style name="TextAppearance.TextView.Label" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
         <item name="android:textColor">@color/gray_400</item>
         <item name="android:fontFamily">@font/suit_m</item>
     </style>
 
-    <style name="Widget.EditText.TextAppearance" parent="">
+    <style name="TextAppearance.EditText" parent="">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray_400</item>
         <item name="android:fontFamily">@font/suit_m</item>
     </style>
 
-    <style name="Widget.RoundButton.TextAppearance" parent="">
+    <style name="TextAppearance.RoundButton" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
         <item name="android:textColor">@color/selector_button_text_color</item>
         <item name="android:fontFamily">@font/suit_sb</item>
     </style>
 
-    <style name="Widget.ToolbarTitle.TextAppearance" parent="">
+    <style name="TextAppearance.Toolbar.Title" parent="">
         <item name="android:textSize">@dimen/typographyBase</item>
         <item name="android:textColor">@color/gray_500</item>
         <item name="android:fontFamily">@font/suit_sb</item>
     </style>
 
-    <style name="Widget.Title.Basic.TextAppearance" parent="">
+    <style name="TextAppearance.Title.Basic" parent="">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray_700</item>
         <item name="android:fontFamily">@font/suit_sb</item>
     </style>
 
-    <style name="Widget.Title.Large.TextAppearance" parent="">
+    <style name="TextAppearance.Title.Large" parent="">
         <item name="android:fontFamily">@font/montserrat_b</item>
         <item name="android:textColor">@color/gray_700</item>
         <item name="android:textSize">28sp</item>
     </style>
 
-    <style name="Widget.Description.Style" parent="">
-        <item name="android:layout_marginTop">@dimen/spacingBase</item>
-        <item name="android:textAppearance">@style/Widget.Description.TextAppearance</item>
-    </style>
-
-    <style name="Widget.Description.TextAppearance" parent="">
+    <style name="TextAppearance.Description" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
         <item name="android:textColor">@color/gray_500</item>
         <item name="android:fontFamily">@font/suit_r</item>
-    </style>
-
-    <style name="Widget.Description.Bold.Style" parent="">
-        <item name="android:layout_marginStart">@dimen/spacing12</item>
-        <item name="android:textAppearance">@style/Widget.Description.TextAppearance</item>
-        <item name="android:fontFamily">@font/suit_sb</item>
     </style>
 </resources>

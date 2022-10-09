@@ -27,7 +27,7 @@
                 android:layout_marginVertical="@dimen/spacingBase"
                 android:layout_marginStart="@dimen/spacingBase"
                 android:text="@string/in_sopt"
-                android:textAppearance="@style/Widget.Title.Large.TextAppearance"
+                android:textAppearance="@style/TextAppearance.Title.Large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,7 +66,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/Widget.CircleImageView.Half" />
+                    app:shapeAppearanceOverlay="@style/Style.CircleImageView.Half" />
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -113,19 +113,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_info"
-                    android:textAppearance="@style/Widget.Title.Basic.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.Title.Basic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/divider_info"
-                    style="@style/Widget.Divider.Style"
+                    style="@style/Style.Divider"
                     android:layout_width="match_parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
                 <TextView
                     android:id="@+id/tv_age"
-                    style="@style/Widget.Description.Style"
+                    style="@style/Style.Description.Basic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_info_age"
@@ -134,7 +134,7 @@
 
                 <TextView
                     android:id="@+id/tv_user_age"
-                    style="@style/Widget.Description.Bold.Style"
+                    style="@style/Style.Description.Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.user == null ? `0` : Integer.toString(viewModel.user.age)}"
@@ -144,7 +144,7 @@
 
                 <TextView
                     android:id="@+id/tv_mbti"
-                    style="@style/Widget.Description.Style"
+                    style="@style/Style.Description.Basic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_info_mbti"
@@ -153,7 +153,7 @@
 
                 <TextView
                     android:id="@+id/tv_user_mbti"
-                    style="@style/Widget.Description.Bold.Style"
+                    style="@style/Style.Description.Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.user.mbti.name()}"
@@ -163,7 +163,7 @@
 
                 <TextView
                     android:id="@+id/tv_part"
-                    style="@style/Widget.Description.Style"
+                    style="@style/Style.Description.Basic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_info_part"
@@ -171,7 +171,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
 
                 <TextView
-                    style="@style/Widget.Description.Bold.Style"
+                    style="@style/Style.Description.Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{context.getString(viewModel.user.part.strRes)}"
@@ -195,19 +195,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_education"
-                    android:textAppearance="@style/Widget.Title.Basic.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.Title.Basic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/divider_education"
-                    style="@style/Widget.Divider.Style"
+                    style="@style/Style.Divider"
                     android:layout_width="match_parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_education" />
 
                 <TextView
                     android:id="@+id/tv_university"
-                    style="@style/Widget.Description.Style"
+                    style="@style/Style.Description.Basic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.user.university}"
@@ -216,7 +216,7 @@
                     tools:text="성신여대" />
 
                 <TextView
-                    style="@style/Widget.Description.Bold.Style"
+                    style="@style/Style.Description.Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.user.major}"
@@ -240,20 +240,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_site"
-                    android:textAppearance="@style/Widget.Title.Basic.TextAppearance"
+                    android:textAppearance="@style/TextAppearance.Title.Basic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/divider_site"
-                    style="@style/Widget.Divider.Style"
+                    style="@style/Style.Divider"
                     android:layout_width="match_parent"
                     app:layout_constraintStart_toStartOf="@id/site"
                     app:layout_constraintTop_toBottomOf="@id/site" />
 
                 <TextView
                     android:id="@+id/tv_github"
-                    style="@style/Widget.Description.Style"
+                    style="@style/Style.Description.Basic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_info_github"
@@ -262,7 +262,7 @@
 
                 <TextView
                     android:id="@+id/tv_blog"
-                    style="@style/Widget.Description.Style"
+                    style="@style/Style.Description.Basic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_info_blog"
