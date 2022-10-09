@@ -1,8 +1,9 @@
 package org.sopt.sample.presentation.types
 
+import androidx.annotation.StringRes
 import org.sopt.sample.R
 
-enum class SoptPartType(val strRes: Int) {
+enum class SoptPartType(@StringRes val strRes: Int) {
     AOS(R.string.part_aos),
     IOS(R.string.part_ios),
     WEB(R.string.part_web),
