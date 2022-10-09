@@ -64,12 +64,12 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(R.layout.activity_sig
 
     private fun addObservers() {
         viewModel.isCompletedSignIn.observe(this, EventObserver { isCompleted ->
-            if (isCompleted) {
-                showToast(getString(R.string.sign_in_success_toast_message))
+            showToast(getString(if (isCompleted) {
                 moveToHome()
+                R.string.sign_in_success_toast_message
             } else {
-                showToast(getString(R.string.sign_in_fail_toast_message))
-            }
+                R.string.sign_in_fail_toast_message
+            }))
         })
     }
 

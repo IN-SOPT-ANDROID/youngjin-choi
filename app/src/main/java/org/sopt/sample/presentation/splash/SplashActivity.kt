@@ -38,10 +38,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun moveToNext(isSigned: Boolean) {
-        lifecycleScope.launch {
-            if (isSigned) startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
-            else startActivity(Intent(this@SplashActivity, SignInActivity::class.java))
-        }
+        startActivity(Intent(this@SplashActivity, if (isSigned) {
+            HomeActivity::class.java
+        } else {
+            SignInActivity::class.java
+        }))
     }
 
     override fun onPause() {
