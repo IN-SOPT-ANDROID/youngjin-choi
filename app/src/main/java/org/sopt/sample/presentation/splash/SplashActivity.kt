@@ -13,6 +13,7 @@ import org.sopt.sample.base.BaseActivity
 import org.sopt.sample.databinding.ActivitySplashBinding
 import org.sopt.sample.presentation.HomeActivity
 import org.sopt.sample.presentation.sign.SignInActivity
+import org.sopt.sample.util.EventObserver
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
@@ -26,7 +27,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun addListeners() {
-        viewModel.isSignedUser.observe(this) { isSigned ->
+        viewModel.isSignedUser.observe(this, EventObserver { isSigned ->
             lifecycleScope.launch {
                 job = launch {
                     delay(2000)
@@ -34,7 +35,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
                     finish()
                 }
             }
-        }
+        })
     }
 
     private fun moveToNext(isSigned: Boolean) {

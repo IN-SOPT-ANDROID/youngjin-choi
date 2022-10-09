@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import org.sopt.sample.util.Event
 import org.sopt.sample.util.InSoptSharedPreference
 import javax.inject.Inject
 
@@ -13,8 +14,8 @@ import javax.inject.Inject
 class SplashViewModel @Inject constructor(
     private val inSoptSharedPreference: InSoptSharedPreference,
 ) : ViewModel() {
-    private val _isSignedUser = MutableLiveData<Boolean>()
-    val isSignedUser: LiveData<Boolean> get() = _isSignedUser
+    private val _isSignedUser = MutableLiveData<Event<Boolean>>()
+    val isSignedUser: LiveData<Event<Boolean>> get() = _isSignedUser
 
     init {
         checkSignedUser()
@@ -22,7 +23,7 @@ class SplashViewModel @Inject constructor(
 
     private fun checkSignedUser() {
         viewModelScope.launch {
-            _isSignedUser.value = inSoptSharedPreference.getUserInfo() != null
+            _isSignedUser.value = Event(inSoptSharedPreference.getUserInfo() != null)
         }
     }
 }
