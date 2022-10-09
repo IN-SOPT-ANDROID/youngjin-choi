@@ -18,7 +18,6 @@ import org.sopt.sample.util.EventObserver
 @AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
     private val viewModel: SplashViewModel by viewModels()
-    private var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +28,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     private fun addListeners() {
         viewModel.isSignedUser.observe(this, EventObserver { isSigned ->
             lifecycleScope.launch {
-                job = launch {
-                    delay(2000)
-                    moveToNext(isSigned)
-                    finish()
-                }
+                delay(2000)
+                moveToNext(isSigned)
+                finish()
             }
         })
     }
@@ -44,10 +41,5 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         } else {
             SignInActivity::class.java
         }))
-    }
-
-    override fun onPause() {
-        job?.cancel()
-        super.onPause()
     }
 }
