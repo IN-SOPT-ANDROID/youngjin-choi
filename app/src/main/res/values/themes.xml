@@ -16,6 +16,10 @@
     </style>
 
     <!-- Widget Style -->
+    <style name="Style.Item.Background" parent="">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
     <style name="Style.EditText" parent="">
         <item name="android:background">@drawable/selector_edittext_background</item>
         <item name="android:paddingVertical">@dimen/spacing16</item>
@@ -63,6 +67,11 @@
     <style name="Style.CircleImageView.Half" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Style.CircleImageView.Radius.12" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12%</item>
     </style>
 
     <!-- TextAppearance -->

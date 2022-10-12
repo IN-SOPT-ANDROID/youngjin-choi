@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="githubProfile"
+            type="org.sopt.sample.domain.GithubInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/repository_container"
+        style="@style/Style.Item.Background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacingBase"
+        android:paddingVertical="@dimen/spacing12">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:image="@{githubProfile.profileImg}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/Style.CircleImageView.Radius.12"
+            tools:src="@drawable/snowball" />
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing12"
+            android:layout_marginTop="@dimen/spacing12"
+            android:fontFamily="@font/suit_m"
+            android:text="@{githubProfile.nickname}"
+            android:textColor="@color/gray_700"
+            android:textSize="@dimen/typographyDescription"
+            app:layout_constraintStart_toEndOf="@id/iv_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="최영진" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/TextAppearance.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacingSmall"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{githubProfile.description}"
+            android:textColor="@color/gray_400"
+            app:layout_constraintStart_toStartOf="@id/tv_nickname"
+            app:layout_constraintTop_toBottomOf="@id/tv_nickname"
+            tools:text="모두들 행복하세요 :)" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -31,6 +31,9 @@
     <string name="profile_info_github"><a href="https://github.com/youngjinc"><font color="#474747"><b><u>GitHub</u></b></font></a></string>
     <string name="profile_info_blog"><a href="https://velog.io/@zini"><font color="#474747"><b><u>Blog</u></b></font></a></string>
 
+    <!-- Github -->
+    <string name="github_follower">Follower</string>
+
     <!-- Part -->
     <string name="part_aos">Android</string>
     <string name="part_ios">IOS</string>
