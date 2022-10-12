@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.sopt.sample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.InSoptApplication"
         android:allowBackup="true"

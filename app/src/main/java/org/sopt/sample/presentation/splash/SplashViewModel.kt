@@ -22,8 +22,6 @@ class SplashViewModel @Inject constructor(
     }
 
     private fun checkSignedUser() {
-        viewModelScope.launch {
-            _isSignedUser.value = Event(inSoptSharedPreference.getUserInfo() != null)
-        }
+        _isSignedUser.value = Event(inSoptSharedPreference.getUserInfo() != null)
     }
 }
