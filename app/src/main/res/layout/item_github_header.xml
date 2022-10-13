@@ -17,7 +17,7 @@
             android:fontFamily="@font/suit_b"
             android:text="@string/github_follower"
             android:textColor="@color/gray_700"
-            android:textSize="@dimen/typographyBase"
+            android:textSize="@dimen/typographyTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
