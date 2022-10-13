@@ -1,4 +1,4 @@
-package org.sopt.sample.domain
+package org.sopt.sample.domain.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import org.sopt.sample.domain.RepositoryInfo
+import org.sopt.sample.domain.entity.RepositoryInfo
 import org.sopt.sample.util.Event
 
 class GithubViewModel : ViewModel() {

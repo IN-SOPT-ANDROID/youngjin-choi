@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.sample.databinding.ItemGithubHeaderBinding
 import org.sopt.sample.databinding.ItemGithubRepositoryBinding
-import org.sopt.sample.domain.RepositoryInfo
+import org.sopt.sample.domain.entity.RepositoryInfo
 import org.sopt.sample.util.ItemDiffCallback
 
 class GithubRepositoryListAdapter :
