@@ -33,12 +33,10 @@ class GithubRepositoryListAdapter :
             inflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
-            HEADER_VIEW_TYPE -> {
-                HeaderViewHolder(ItemGithubHeaderBinding.inflate(inflater, parent, false))
-            }
-            else -> {
-                ProfileViewHolder(ItemGithubRepositoryBinding.inflate(inflater, parent, false))
-            }
+            HEADER_VIEW_TYPE -> HeaderViewHolder(ItemGithubHeaderBinding.inflate(inflater,
+                parent,
+                false))
+            else -> ProfileViewHolder(ItemGithubRepositoryBinding.inflate(inflater, parent, false))
         }
     }
 
@@ -48,9 +46,8 @@ class GithubRepositoryListAdapter :
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (position == 0) HEADER_VIEW_TYPE else LIST_VIEW_TYPE
-    }
+    override fun getItemViewType(position: Int): Int =
+        if (position == 0) HEADER_VIEW_TYPE else LIST_VIEW_TYPE
 
     override fun getItemCount(): Int = currentList.size + 1
 

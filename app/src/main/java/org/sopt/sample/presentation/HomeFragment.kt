@@ -9,6 +9,7 @@ import org.sopt.sample.databinding.FragmentHomeBinding
 import org.sopt.sample.presentation.github.GithubRepositoryListAdapter
 import org.sopt.sample.presentation.github.GithubViewModel
 import org.sopt.sample.util.EventObserver
+import timber.log.Timber
 import java.io.IOException
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -24,7 +25,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun initData() {
-        getJsonFromAssets("fake_repo_list.json")?.let {
+        getJsonStrFromAssets("fake_repo_list.json")?.let {
             viewModel.fetchRepositoryList(it)
         }
     }
@@ -43,8 +44,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         })
     }
 
-    private fun getJsonFromAssets(fileName: String): String? {
-        val jsonString: String = try {
+    private fun getJsonStrFromAssets(fileName: String): String? =
+        try {
             val `is` = requireActivity().assets.open(fileName)
             val size = `is`.available()
             val buffer = ByteArray(size)
@@ -52,9 +53,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             `is`.close()
             String(buffer, charset("UTF-8"))
         } catch (e: IOException) {
-            e.printStackTrace()
-            return null
+            Timber.e(e.message)
+            null
         }
-        return jsonString
-    }
 }

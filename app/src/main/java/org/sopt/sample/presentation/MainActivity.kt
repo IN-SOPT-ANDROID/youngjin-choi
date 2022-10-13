@@ -30,11 +30,9 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private fun changeFragment(menuItemId: Int) = when (menuItemId) {
-        R.id.home -> replace<HomeFragment>(R.id.home_container, HomeFragment::class.java.simpleName)
-        R.id.gallery -> replace<GalleryFragment>(R.id.home_container,
-            GalleryFragment::class.java.simpleName)
-        R.id.search -> replace<SearchFragment>(R.id.home_container,
-            SearchFragment::class.java.simpleName)
+        R.id.home -> replace<HomeFragment>(R.id.fragment_container_view, HomeFragment::class.java.simpleName)
+        R.id.gallery -> replace<GalleryFragment>(R.id.fragment_container_view)
+        R.id.search -> replace<SearchFragment>(R.id.fragment_container_view)
         else -> Timber.e(IllegalArgumentException("Not found menu item id"))
     }
 }
