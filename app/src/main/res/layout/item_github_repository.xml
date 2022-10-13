@@ -22,7 +22,7 @@
             android:id="@+id/iv_profile"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:image="@{repository.image}"
+            app:image="@{repository.owner.image}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/Style.CircleImageView.Radius.12"
@@ -54,6 +54,6 @@
             android:textColor="@color/gray_400"
             app:layout_constraintStart_toStartOf="@id/tv_nickname"
             app:layout_constraintTop_toBottomOf="@id/tv_nickname"
-            tools:text="🍑 🐰 🍑" />
+            tools:text="배우고 성장하는 중입니다 :)" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
