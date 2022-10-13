@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.sample.databinding.ItemGithubHeaderBinding
-import org.sopt.sample.databinding.ItemGithubProfileBinding
-import org.sopt.sample.domain.GithubInfo
+import org.sopt.sample.databinding.ItemGithubRepositoryBinding
+import org.sopt.sample.domain.RepositoryInfo
 import org.sopt.sample.util.ItemDiffCallback
 
-class GithubFollowerListAdapter :
-    ListAdapter<GithubInfo, RecyclerView.ViewHolder>(
-        ItemDiffCallback<GithubInfo>(
+class GithubRepositoryListAdapter :
+    ListAdapter<RepositoryInfo, RecyclerView.ViewHolder>(
+        ItemDiffCallback<RepositoryInfo>(
             onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old == new }
         )) {
@@ -21,10 +21,10 @@ class GithubFollowerListAdapter :
     class HeaderViewHolder(private val binding: ItemGithubHeaderBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    class ProfileViewHolder(private val binding: ItemGithubProfileBinding) :
+    class ProfileViewHolder(private val binding: ItemGithubRepositoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: GithubInfo) {
-            binding.githubProfile = data
+        fun onBind(data: RepositoryInfo) {
+            binding.repository = data
         }
     }
 
@@ -37,7 +37,7 @@ class GithubFollowerListAdapter :
                 HeaderViewHolder(ItemGithubHeaderBinding.inflate(inflater, parent, false))
             }
             else -> {
-                ProfileViewHolder(ItemGithubProfileBinding.inflate(inflater, parent, false))
+                ProfileViewHolder(ItemGithubRepositoryBinding.inflate(inflater, parent, false))
             }
         }
     }

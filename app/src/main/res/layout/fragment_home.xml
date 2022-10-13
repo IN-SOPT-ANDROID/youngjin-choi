@@ -12,7 +12,7 @@
             android:id="@+id/rv_name_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_github_profile"
+            tools:listitem="@layout/item_github_repository"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
