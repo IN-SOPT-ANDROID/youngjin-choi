@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/suit_b"
-            android:text="@string/github_follower"
+            android:text="@string/github_repository"
             android:textColor="@color/gray_700"
             android:textSize="@dimen/typographyTitle"
             app:layout_constraintStart_toStartOf="parent"

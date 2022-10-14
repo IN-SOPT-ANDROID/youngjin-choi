@@ -37,7 +37,7 @@
     <string name="profile_info_blog"><a href="https://velog.io/@zini"><font color="#474747"><b><u>Blog</u></b></font></a></string>
 
     <!-- Github -->
-    <string name="github_follower">Follower</string>
+    <string name="github_repository">Repository</string>
 
     <!-- Part -->
     <string name="part_aos">Android</string>
