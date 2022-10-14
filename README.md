@@ -4,7 +4,7 @@
 <summary>Week2</summary> -->
 
 # Week2 - Adapter 패턴을 활용하는 UI 컴포넌트들
-<img src="https://user-images.githubusercontent.com/48701368/195724632-1e4a1511-a425-4d07-bbab-fb588da820c1.gif" width="360" />
+<img src="https://user-images.githubusercontent.com/48701368/195735354-4bf4ea43-1772-404b-827e-e5200ab1a595.gif" width="360" />
 
 <br>
 
