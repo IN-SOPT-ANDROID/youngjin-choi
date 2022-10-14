@@ -9,11 +9,13 @@
         tools:context=".presentation.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_name_list"
+            android:id="@+id/rv_repository_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_github_repository"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/spacing12"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_github_repository" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

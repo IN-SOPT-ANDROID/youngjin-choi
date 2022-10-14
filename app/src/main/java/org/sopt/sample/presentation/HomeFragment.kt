@@ -31,11 +31,11 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     fun scrollToTop() {
-        binding.rvNameList.layoutManager?.scrollToPosition(0)
+        binding.rvRepositoryList.layoutManager?.scrollToPosition(0)
     }
 
     private fun initLayout() {
-        binding.rvNameList.adapter = adapter
+        binding.rvRepositoryList.adapter = adapter
     }
 
     private fun addObservers() {
