@@ -1,13 +1,96 @@
 # YoungJin
 
 <!-- <details>
-<summary>week1</summary> -->
+<summary>Week2</summary> -->
 
-# Week1 - Android UI 구현 기초
+# Week2 - Adapter 패턴을 활용하는 UI 컴포넌트들
+<img src="https://user-images.githubusercontent.com/48701368/195735354-4bf4ea43-1772-404b-827e-e5200ab1a595.gif" width="360" />
+
+<br>
+
+# Fragment Lifecycle callbacks
+<img width="400" src="https://developer.android.com/static/images/guide/fragments/fragment-view-lifecycle.png">
+
+- Activity Lifecycle 비교하면 생성 시에는 onViewCreated() - onViewStateRestored()가 추가로 있고, 파괴 시에는 onSaveInstanceState() - onDestroyView()가 추가되었다.
+- Fragment Lifecycle보다 View Lifecycle이 더 짧다.
+
+## Lifecycle.State enum
+`INITIALIZED`, `CREATED`, `STARTED`, `RESUMED`, `DESTROYED`
+
+## onAttach()
+- 프래그먼트가 액티비티에 붙을 때 호출
+- 인자로 Context가 주어짐
+
+## onCreate()
+- FragmentManager 에 add 됐을 때 도달하며 onCreate() 콜백함수를 호출
+- 프래그먼트가 액티비티의 호출을 받아 생성
+- onCreate() 이전에 onAttach()가 먼저 호출됨
+- Bundle 타입으로 액티비티로부터 데이터(savedInstanceState)가 넘어옴. 이는 onSaveInstanceState()에 의에 저장된 Bundle 값임
+- 여기서 또 알아야할 부분은 savedInstanceState 파라미터는 프래그먼트가 처음 생성 됐을 때만 null 로 넘어오며, onSaveInstanceState()를 재정의하지 않았더라도 그 이후 재생성부터는 non-null값으로 넘어옴
+- Fragment View가 생성되지 않았기 때문에 Fragment의 View와 관련된 작업을 두기에 적절하지 않음 -> UI 초기화 불가능
+
+## onCreateView()
+- 레이아웃 inflate 담당 
+- onCreateView()의 반환값으로 정상적인 Fragment View객체를 제공했을 때만 Fragment View의 Lifecycle이 생성됨
+- savedInstanceState로 이전 상태에 대한 데이터 제공
+- View와 관련된 객체를 초기화 할 수 있음
+
+## onViewCreated()
+- onCreateView()를 통해 반환된 View 객체는 onViewCreated()의 파라미터로 전달됨
+- 이 시점부터는 Fragment View의 Lifecycle이 INITIALIZED 상태로 업데이트 됐음
+- 때문에 View의 초기값 설정, LiveData 옵저빙, RecyclerView, ViewPager2에 사용될 Adapter 세팅 적절
+
+## onViewStateRestored()
+- 함수는 저장해둔 모든 state 값이 Fragment의 View 계층구조에 복원 됐을 때 호출됨
+- 따라서 여기서부터는 체크박스 위젯이 현재 체크 되어있는지 등 각 뷰의 상태값을 체크할 수 있음
+
+## onStart()
+- Fragment가 사용자에게 보여질 수 있을 때 호출됨
+- 주로 Fragment가 attach 되어있는 Activity의 onStart() 시점과 유사
+- 이 시점부터는 Fragment의 child FragmentManager 통해 FragmentTransaction을 안전하게 수행 가능
+- Fragment의 Lifecycle이 STARTED로 이동한 후에 Fragment View의 Lifecycle 또한 STARTED로 변환
+
+## onResume()
+- 사용자와 프래그먼트가 상호작용 할 수 있는 상태일 때 호출. 다시 말해 onResume()이 호출되지 않은 시점에서는 입력을 시도하거나 포커스를 설정하는 등의 작업을 임의로 하면 안된다는 것을 의미
+- Fragment가 보이는 상태에서 모든 Animator와 Transition 효과가 종료되고, 프래그먼트와 사용자가 상호작용 할 수 있을 때 onResume() 호출됨
+- onStart()와 마찬가지로 주로 Activity의 onResume()시점과 유사
+
+## onPause()
+- 사용자가 Fragment 를 떠나기 시작했지만 Fragment가 visible 일 때 onPause()가 호출
+- 이 때 Faragment와 View의 Lifecycle이 PAUSED가 아닌 STARTED가 됨 // Lifecycle에 PAUSE와 STOP에 해당하는 상태가 없음
+
+## onStop()
+- Fragment가 더 이상 화면에 보여지지 않게 되면 onStop() 콜백 호출
+- 부모 액티비티, 프래그먼트가 중단될 때, 상태가 저장될 때 호출
+- View와 Lifecycle: STARTED → CREATED
+- API 28버전을 기점으로 onSaveInstanceState() 함수와 onStop() 함수 호출 순서가 달라짐, 따라서 onStop()이 FragmentTransaction을 안전하게 수행하는 마지막 지점이 됨
+<img width="400" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbC4Zkm%2Fbtq9DwbxrgQ%2FIl287fhextuJbiCRZtZde1%2Fimg.png" />
+
+## onDestoryView()
+- 모든 exit animation, transaction이 완료되고 Fragment가 화면으로부터 벗어났을 경우 호출
+- view와 lifecycle: CREATED → DESTROYED
+- getViewLifecycleOwnerLiveData()의 리턴값으로 null 이 반환
+- 가비지 컬렉터에 의해 수거될 수 있도록 Fragment View에 대한 모든 참조가 제거되어야 함
+
+## onDestroy()
+- Fragment가 제거되거나, FragmentManager가 destroy 됐을 경우, 프래그먼트의 Lifecycle 은 DESTROYED 상태가 되고, onDestroy() 호출
+- Fragment Lifecycle의 끝을 알림
+- onAttach() 가 onCreate()이전에 호출 됐던 것처럼 onDetach()또한 onDestroy()이후 호출됨
+
+## onDetach()
+- 프래그먼트가 액티비티로부터 해제되어질 때 호출됨
+
+<br>
+
+<details>
+<summary>week1</summary>
+
+# Week1 - View, ViewGroup과 UI 이벤트 처리하기
 <img src="https://user-images.githubusercontent.com/48701368/193726884-fdbec67c-75ea-438d-b77c-008cd4e22b62.gif" width="360" />
 
-# Lifecycle callbacks
+<br>
 
+# Activity Lifecycle callbacks
 <img width="400" src="https://developer.android.com/guide/components/images/activity_lifecycle.png">
 
 Activity 클래스는 Activity 상태가 변경되었음을 알 수 있는 여러 콜백을 제공한다. Activity 클래스는 수명 주기의 단계 간 전환을 탐색하기 위해 6가지 콜백 onCreate(), onStart(), onResume(), onPause(), onStop()및 onDestroy()를 제공한다. 시스템은 Activity이 새로운 상태에 들어갈 때 각 콜백을 호출한다.
@@ -208,7 +291,7 @@ override fun onStop() {
 
 <br>
 
-<!-- </details> -->
+</details>
 
 <br>
 

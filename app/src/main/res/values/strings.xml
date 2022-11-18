@@ -2,6 +2,11 @@
     <string name="app_name">INSOPTAndroidPractice</string>
     <string name="in_sopt">IN SOPT</string>
 
+    <!-- Menu -->
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_search">Search</string>
+
     <!-- Sign -->
     <string name="sign_in">로그인하기</string>
     <string name="sign_up">가입하기</string>
@@ -30,6 +35,9 @@
     <string name="profile_site">웹사이트</string>
     <string name="profile_info_github"><a href="https://github.com/youngjinc"><font color="#474747"><b><u>GitHub</u></b></font></a></string>
     <string name="profile_info_blog"><a href="https://velog.io/@zini"><font color="#474747"><b><u>Blog</u></b></font></a></string>
+
+    <!-- Github -->
+    <string name="github_repository">Repository</string>
 
     <!-- Part -->
     <string name="part_aos">Android</string>
