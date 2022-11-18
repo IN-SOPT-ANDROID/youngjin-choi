@@ -54,7 +54,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideUnAuthOkHttpClientBuilder(): OkHttpClient =
+    fun provideAuthOkHttpClientBuilder(): OkHttpClient =
         OkHttpClient.Builder().apply {
             connectTimeout(10, TimeUnit.SECONDS)
             writeTimeout(10, TimeUnit.SECONDS)
