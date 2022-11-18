@@ -119,7 +119,7 @@
 
                 <View
                     android:id="@+id/divider_info"
-                    style="@style/Style.Divider"
+                    style="@style/Style.Divider.Home.Menu"
                     android:layout_width="match_parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
@@ -201,7 +201,7 @@
 
                 <View
                     android:id="@+id/divider_education"
-                    style="@style/Style.Divider"
+                    style="@style/Style.Divider.Home.Menu"
                     android:layout_width="match_parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_education" />
 
@@ -246,7 +246,7 @@
 
                 <View
                     android:id="@+id/divider_site"
-                    style="@style/Style.Divider"
+                    style="@style/Style.Divider.Home.Menu"
                     android:layout_width="match_parent"
                     app:layout_constraintStart_toStartOf="@id/site"
                     app:layout_constraintTop_toBottomOf="@id/site" />

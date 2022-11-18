@@ -57,9 +57,12 @@
     </style>
 
     <!-- Divider -->
-    <style name="Style.Divider" parent="">
+    <style name="Style.Divider.Basic" parent="">
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/gray_200</item>
+    </style>
+
+    <style name="Style.Divider.Home.Menu" parent="Style.Divider.Basic">
         <item name="android:layout_marginTop">@dimen/spacing10</item>
     </style>
 
