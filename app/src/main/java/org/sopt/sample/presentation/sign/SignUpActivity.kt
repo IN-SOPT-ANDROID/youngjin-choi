@@ -9,6 +9,8 @@ import org.sopt.sample.base.BindingActivity
 import org.sopt.sample.databinding.ActivitySignUpBinding
 import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.presentation.types.MbtiType
+import org.sopt.sample.util.EventObserver
+import org.sopt.sample.util.extensions.showToast
 import org.sopt.sample.util.safeValueOf
 
 @AndroidEntryPoint
@@ -22,6 +24,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         binding.lifecycleOwner = this
 
         addListeners()
+        addObservers()
     }
 
     private fun addListeners() {
@@ -30,8 +33,19 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         }
 
         binding.btnSignUp.setOnClickListener {
-            moveToSignIn()
+            viewModel.signUp()
         }
+    }
+
+    private fun addObservers() {
+        viewModel.isCompletedSignUp.observe(this, EventObserver { isCompleted ->
+            showToast(getString(if (isCompleted) {
+                moveToSignIn()
+                R.string.sign_up_success_toast_message
+            } else {
+                R.string.sign_up_failure_toast_message
+            }))
+        })
     }
 
     private fun moveToSignIn() {
@@ -39,7 +53,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         with(binding) {
             intent.putExtra(
                 ARG_USER_INFO,
-                UserInfo(etId.text.toString(),
+                UserInfo(etEmail.text.toString(),
                     etPassword.text.toString(),
                     etName.text.toString(),
                     safeValueOf<MbtiType>(etMbti.text.toString().uppercase()))

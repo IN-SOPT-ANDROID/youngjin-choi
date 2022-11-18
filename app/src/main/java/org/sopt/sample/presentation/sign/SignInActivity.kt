@@ -14,7 +14,6 @@ import org.sopt.sample.databinding.ActivitySignInBinding
 import org.sopt.sample.presentation.HomeActivity
 import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.util.EventObserver
-import org.sopt.sample.util.extensions.showSnackbar
 import org.sopt.sample.util.extensions.showToast
 
 @AndroidEntryPoint
@@ -47,7 +46,6 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
 
                 userInfo?.let {
                     viewModel.setUserInfo(it)
-                    binding.root.showSnackbar(getString(R.string.sign_up_success_snackbar_message))
                 }
             }
     }
@@ -68,7 +66,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
                 moveToHome()
                 R.string.sign_in_success_toast_message
             } else {
-                R.string.sign_in_fail_toast_message
+                R.string.sign_in_failure_toast_message
             }))
         })
     }
