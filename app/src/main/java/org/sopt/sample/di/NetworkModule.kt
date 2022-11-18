@@ -10,10 +10,11 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.sopt.sample.BuildConfig.BASE_URL
-import org.sopt.sample.BuildConfig.DEBUG
+import org.sopt.sample.BuildConfig.*
+import org.sopt.sample.data.type.BaseUrlType
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -34,8 +35,19 @@ object NetworkModule {
     @ExperimentalSerializationApi
     @Provides
     @Singleton
-    fun provideRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+    @Retrofit2(BaseUrlType.SOPT)
+    fun provideSoptRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
+        .baseUrl(SOPT_BASE_URL)
+        .client(client)
+        .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
+        .build()
+
+    @ExperimentalSerializationApi
+    @Provides
+    @Singleton
+    @Retrofit2(BaseUrlType.REQRES)
+    fun provideReqResRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
+        .baseUrl(REQRES_BASE_URL)
         .client(client)
         .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
         .build()
@@ -49,4 +61,7 @@ object NetworkModule {
             readTimeout(10, TimeUnit.SECONDS)
             if (DEBUG) addInterceptor(loggingInterceptor)
         }.build()
+
+    @Qualifier
+    annotation class Retrofit2(val type: BaseUrlType)
 }

@@ -40,6 +40,9 @@
     <!-- Github -->
     <string name="github_repository">Repository</string>
 
+    <!-- Follower -->
+    <string name="follower_title">Followers</string>
+
     <!-- Part -->
     <string name="part_aos">Android</string>
     <string name="part_ios">IOS</string>

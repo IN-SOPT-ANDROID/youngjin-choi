@@ -5,6 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.sopt.sample.data.service.AuthService
+import org.sopt.sample.data.service.FollowerService
+import org.sopt.sample.data.type.BaseUrlType
+import org.sopt.sample.di.NetworkModule.Retrofit2
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -13,6 +16,11 @@ import javax.inject.Singleton
 object ServiceModule {
     @Singleton
     @Provides
-    fun provideAuthAPIService(retrofit: Retrofit): AuthService =
+    fun provideAuthService(@Retrofit2(BaseUrlType.SOPT) retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideFollowerService(@Retrofit2(BaseUrlType.REQRES) retrofit: Retrofit): FollowerService =
+        retrofit.create(FollowerService::class.java)
 }
