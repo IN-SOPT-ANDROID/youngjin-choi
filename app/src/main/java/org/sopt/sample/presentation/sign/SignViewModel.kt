@@ -24,10 +24,10 @@ class SignViewModel @Inject constructor(
 
     var userInput: UserInfo? = null
 
-    private var _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
+    private val _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
     val isCompletedSignIn: LiveData<Event<Boolean>> get() = _isCompletedSignIn
 
-    private var _isCompletedSignUp = MutableLiveData<Event<Boolean>>()
+    private val _isCompletedSignUp = MutableLiveData<Event<Boolean>>()
     val isCompletedSignUp: LiveData<Event<Boolean>> get() = _isCompletedSignUp
 
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
