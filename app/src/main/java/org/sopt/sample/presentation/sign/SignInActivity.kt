@@ -38,14 +38,13 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
                 if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
                 val data = result.data ?: return@registerForActivityResult
 
-                val userInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    data.getParcelableExtra(ARG_USER_INFO, UserInfo::class.java)
-                } else {
-                    data.getParcelableExtra(ARG_USER_INFO)
-                }
-
-                userInfo?.let {
-                    viewModel.setUserInfo(it)
+                data.getBundleExtra(ARG_USER_INPUT)?.let {
+                    val userInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        it.getParcelable(ARG_USER_INFO, UserInfo::class.java)
+                    } else {
+                        it.getParcelable(ARG_USER_INFO)
+                    } ?: return@let
+                    viewModel.setUserInfo(userInfo, it.getString(ARG_USER_PASSWORD) ?: return@let)
                 }
             }
     }
@@ -90,7 +89,9 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     }
 
     companion object {
-        const val ARG_USER_INFO = "userInfo"
+        private const val ARG_USER_INPUT = "userInput"
+        private const val ARG_USER_INFO = "userInfo"
+        private const val ARG_USER_PASSWORD = "userPassword"
         const val ARG_USER_BUNDLE = "userBundle"
     }
 }

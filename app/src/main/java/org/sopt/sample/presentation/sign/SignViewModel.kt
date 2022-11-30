@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.sopt.sample.domain.repositories.AuthRepository
 import org.sopt.sample.presentation.model.UserInfo
+import org.sopt.sample.presentation.types.MbtiType
 import org.sopt.sample.util.Event
 import org.sopt.sample.util.InSoptSharedPreference
 import org.sopt.sample.util.extensions.addSourceList
@@ -19,11 +20,10 @@ class SignViewModel @Inject constructor(
     private val authRepository: AuthRepository,
 ) :
     ViewModel() {
-    val id = MutableLiveData<String>()
+    val id = MutableLiveData<String?>()
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
-
-    var userInput: UserInfo? = null
+    val mbti = MutableLiveData<MbtiType?>()
 
     private val _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
     val isCompletedSignIn: LiveData<Event<Boolean>> get() = _isCompletedSignIn
@@ -69,15 +69,18 @@ class SignViewModel @Inject constructor(
 
     fun signIn() {
         viewModelScope.launch {
-            safeLet(email.value, password.value) { id, password ->
-                val isSuccessful = authRepository.signIn(id, password)
-                if (isSuccessful) inSoptSharedPreference.setUserInfo(userInput!!)
+            safeLet(email.value, password.value) { email, password ->
+                val isSuccessful = authRepository.signIn(email, password)
+                if (isSuccessful) inSoptSharedPreference.setUserInfo(id.value, email, mbti.value)
                 _isCompletedSignIn.value = Event(isSuccessful)
             }
         }
     }
 
-    fun setUserInfo(userInput: UserInfo) {
-        this.userInput = userInput
+    fun setUserInfo(userInput: UserInfo, password: String) {
+        id.value = userInput.id
+        email.value = userInput.email
+        mbti.value = userInput.mbti
+        this.password.value = password
     }
 }
