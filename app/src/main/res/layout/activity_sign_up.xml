@@ -101,13 +101,14 @@
                     android:textAppearance="@style/TextAppearance.Detail"
                     app:layout_constraintEnd_toEndOf="@id/gl_end"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_id" />
+                    app:layout_constraintTop_toBottomOf="@id/et_id"
+                    app:visibility="@{!viewModel.isValidId() &amp;&amp; viewModel.id.length() > 0}" />
 
                 <TextView
                     android:id="@+id/tv_email_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing16"
+                    android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_email_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -136,13 +137,14 @@
                     android:textAppearance="@style/TextAppearance.Detail"
                     app:layout_constraintEnd_toEndOf="@id/gl_end"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_email" />
+                    app:layout_constraintTop_toBottomOf="@id/et_email"
+                    app:visibility="@{!viewModel.isValidEmail() &amp;&amp; viewModel.email.length() > 0}" />
 
                 <TextView
                     android:id="@+id/tv_password_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing16"
+                    android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_password_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
@@ -171,13 +173,14 @@
                     android:textAppearance="@style/TextAppearance.Detail"
                     app:layout_constraintEnd_toEndOf="@id/gl_end"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_password" />
+                    app:layout_constraintTop_toBottomOf="@id/et_password"
+                    app:visibility="@{!viewModel.isValidPassword() &amp;&amp; viewModel.password.length() > 0}" />
 
                 <TextView
                     android:id="@+id/tv_mbti_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing16"
+                    android:layout_marginTop="@dimen/spacingBase"
                     android:text="@string/sign_mbti_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
