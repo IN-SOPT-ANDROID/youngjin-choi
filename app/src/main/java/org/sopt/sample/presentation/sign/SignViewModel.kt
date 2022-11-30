@@ -20,7 +20,7 @@ class SignViewModel @Inject constructor(
     ViewModel() {
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
-    val name = MutableLiveData<String>()
+    val id = MutableLiveData<String>()
 
     var userInput: UserInfo? = null
 
@@ -31,18 +31,18 @@ class SignViewModel @Inject constructor(
     val isCompletedSignUp: LiveData<Event<Boolean>> get() = _isCompletedSignUp
 
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
-        addSourceList(email, password, name) { checkValidSignInput() }
+        addSourceList(email, password, id) { checkValidSignInput() }
     }
 
     private fun checkValidSignInput(): Boolean {
-        if (name.value.isNullOrBlank() || email.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
+        if (id.value.isNullOrBlank() || email.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
         return Patterns.EMAIL_ADDRESS.matcher(email.value!!)
             .matches() && password.value!!.length in 8..12
     }
 
     fun signUp() {
         viewModelScope.launch {
-            safeLet(email.value, password.value, name.value) { id, password, name ->
+            safeLet(email.value, password.value, id.value) { id, password, name ->
                 val isSuccessful = authRepository.signUp(id, password, name)
                 _isCompletedSignUp.value = Event(isSuccessful)
             }

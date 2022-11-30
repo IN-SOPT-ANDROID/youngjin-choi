@@ -55,7 +55,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
                 ARG_USER_INFO,
                 UserInfo(etEmail.text.toString(),
                     etPassword.text.toString(),
-                    etName.text.toString(),
+                    etId.text.toString(),
                     safeValueOf<MbtiType>(etMbti.text.toString().uppercase()))
             )
         }

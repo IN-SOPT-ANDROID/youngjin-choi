@@ -29,17 +29,17 @@ class InSoptSharedPreference @Inject constructor(@ApplicationContext context: Co
 
     fun setUserInfo(user: UserInfo) {
         dataStore.edit().run {
-            putString(PREF_USER_ID, user.email)
+            putString(PREF_USER_EMAIL, user.email)
             putString(PREF_USER_PASSWORD, user.password)
-            putString(PREF_USER_NAME, user.name)
+            putString(PREF_USER_ID, user.id)
             putString(PREF_USER_MBTI, user.mbti.toString())
         }.apply()
     }
 
     fun getUserInfo(): UserInfo? {
         with(dataStore) {
-            val name = getString(PREF_USER_NAME, null)
-            val id = getString(PREF_USER_ID, null)
+            val name = getString(PREF_USER_ID, null)
+            val id = getString(PREF_USER_EMAIL, null)
 
             // 유저 이름이 존재하지 않는 경우, 미가입자로 판단
             if (name == null || id == null) return null
@@ -55,9 +55,9 @@ class InSoptSharedPreference @Inject constructor(@ApplicationContext context: Co
 
     companion object {
         private const val FILE_NAME = "IN-SOPT"
-        private const val PREF_USER_ID = "userId"
+        private const val PREF_USER_EMAIL = "userEmail"
         private const val PREF_USER_PASSWORD = "userPassword"
-        private const val PREF_USER_NAME = "userName"
+        private const val PREF_USER_ID = "userId"
         private const val PREF_USER_MBTI = "userMbti"
     }
 }

@@ -69,28 +69,28 @@
                     app:layout_constraintGuide_end="@dimen/spacingBase" />
 
                 <TextView
-                    android:id="@+id/tv_name_label"
+                    android:id="@+id/tv_id_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
-                    android:text="@string/sign_name_label"
+                    android:text="@string/sign_id_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_name"
+                    android:id="@+id/et_id"
                     style="@style/Style.EditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingSmall"
-                    android:hint="@string/sign_name_hint"
+                    android:hint="@string/sign_id_hint"
                     android:maxLines="1"
-                    android:text="@={viewModel.name}"
+                    android:text="@={viewModel.id}"
                     app:layout_constraintEnd_toEndOf="@id/gl_end"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/tv_name_label" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_id_label" />
 
                 <TextView
                     android:id="@+id/tv_email_label"
@@ -101,7 +101,7 @@
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_name" />
+                    app:layout_constraintTop_toBottomOf="@id/et_id" />
 
                 <EditText
                     android:id="@+id/et_email"
