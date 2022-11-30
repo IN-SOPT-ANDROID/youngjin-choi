@@ -29,7 +29,7 @@ class InSoptSharedPreference @Inject constructor(@ApplicationContext context: Co
 
     fun setUserInfo(user: UserInfo) {
         dataStore.edit().run {
-            putString(PREF_USER_ID, user.id)
+            putString(PREF_USER_ID, user.email)
             putString(PREF_USER_PASSWORD, user.password)
             putString(PREF_USER_NAME, user.name)
             putString(PREF_USER_MBTI, user.mbti.toString())

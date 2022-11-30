@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.sign.SignInActivity">
+        tools:context=".presentation.sign.SignUpActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_toolbar"
@@ -93,28 +93,28 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_name_label" />
 
                 <TextView
-                    android:id="@+id/tv_id_label"
+                    android:id="@+id/tv_email_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
-                    android:text="@string/sign_id_label"
+                    android:text="@string/sign_email_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
                     app:layout_constraintTop_toBottomOf="@id/et_name" />
 
                 <EditText
-                    android:id="@+id/et_id"
+                    android:id="@+id/et_email"
                     style="@style/Style.EditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingSmall"
-                    android:hint="@string/sign_id_hint"
+                    android:hint="@string/sign_email_hint"
                     android:maxLines="1"
-                    android:text="@={viewModel.id}"
+                    android:text="@={viewModel.email}"
                     app:layout_constraintEnd_toEndOf="@id/gl_end"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/tv_id_label" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_email_label" />
 
                 <TextView
                     android:id="@+id/tv_password_label"
@@ -124,7 +124,7 @@
                     android:text="@string/sign_password_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_id" />
+                    app:layout_constraintTop_toBottomOf="@id/et_email" />
 
                 <EditText
                     android:id="@+id/et_password"

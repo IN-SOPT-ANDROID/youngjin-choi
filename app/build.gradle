@@ -5,7 +5,11 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'kotlinx-serialization'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.10'
 }
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     namespace 'org.sopt.sample'
@@ -19,6 +23,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "SOPT_BASE_URL", properties["sopt.base.url"]
+        buildConfigField "String", "REQRES_BASE_URL", properties["reqres.base.url"]
     }
 
     buildTypes {
@@ -66,6 +72,13 @@ dependencies {
 
     // Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0'
+
+    // Okhttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
 
     // Json
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0'

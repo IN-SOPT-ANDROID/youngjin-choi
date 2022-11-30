@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RepositoryInfo(
+data class ResponseRepository(
     // TODO camelCase 적용
     val allow_forking: Boolean,
     val archive_url: String,

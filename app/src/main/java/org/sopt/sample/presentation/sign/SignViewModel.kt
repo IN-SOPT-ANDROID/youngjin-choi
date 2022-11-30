@@ -1,41 +1,61 @@
 package org.sopt.sample.presentation.sign
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Patterns
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import org.sopt.sample.domain.repositories.AuthRepository
 import org.sopt.sample.presentation.model.UserInfo
 import org.sopt.sample.util.Event
 import org.sopt.sample.util.InSoptSharedPreference
 import org.sopt.sample.util.extensions.addSourceList
+import org.sopt.sample.util.safeLet
 import javax.inject.Inject
 
 @HiltViewModel
-class SignViewModel @Inject constructor(private val inSoptSharedPreference: InSoptSharedPreference) :
+class SignViewModel @Inject constructor(
+    private val inSoptSharedPreference: InSoptSharedPreference,
+    private val authRepository: AuthRepository,
+) :
     ViewModel() {
-    val id = MutableLiveData<String>()
+    val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val name = MutableLiveData<String>()
 
     var userInput: UserInfo? = null
 
-    private var _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
+    private val _isCompletedSignIn = MutableLiveData<Event<Boolean>>()
     val isCompletedSignIn: LiveData<Event<Boolean>> get() = _isCompletedSignIn
 
+    private val _isCompletedSignUp = MutableLiveData<Event<Boolean>>()
+    val isCompletedSignUp: LiveData<Event<Boolean>> get() = _isCompletedSignUp
+
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
-        addSourceList(id, password, name) { checkValidSignInput() }
+        addSourceList(email, password, name) { checkValidSignInput() }
     }
 
     private fun checkValidSignInput(): Boolean {
-        if (name.value.isNullOrBlank() || id.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
-        return id.value!!.length in 6..10 && password.value!!.length in 8..12
+        if (name.value.isNullOrBlank() || email.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
+        return Patterns.EMAIL_ADDRESS.matcher(email.value!!)
+            .matches() && password.value!!.length in 8..12
+    }
+
+    fun signUp() {
+        viewModelScope.launch {
+            safeLet(email.value, password.value, name.value) { id, password, name ->
+                val isSuccessful = authRepository.signUp(id, password, name)
+                _isCompletedSignUp.value = Event(isSuccessful)
+            }
+        }
     }
 
     fun signIn() {
-        (id.value == userInput?.id && password.value == userInput?.password).let { isValid ->
-            if (isValid && userInput != null) inSoptSharedPreference.setUserInfo(userInput!!)
-            _isCompletedSignIn.value = Event(isValid)
+        viewModelScope.launch {
+            safeLet(email.value, password.value) { id, password ->
+                val isSuccessful = authRepository.signIn(id, password)
+                if (isSuccessful) inSoptSharedPreference.setUserInfo(userInput!!)
+                _isCompletedSignIn.value = Event(isSuccessful)
+            }
         }
     }
 

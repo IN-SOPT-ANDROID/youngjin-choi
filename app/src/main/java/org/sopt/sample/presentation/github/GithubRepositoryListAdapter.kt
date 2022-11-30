@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.sample.databinding.ItemGithubHeaderBinding
 import org.sopt.sample.databinding.ItemGithubRepositoryBinding
-import org.sopt.sample.domain.entity.RepositoryInfo
+import org.sopt.sample.domain.entity.ResponseRepository
 import org.sopt.sample.util.ItemDiffCallback
 
 class GithubRepositoryListAdapter :
-    ListAdapter<RepositoryInfo, RecyclerView.ViewHolder>(
-        ItemDiffCallback<RepositoryInfo>(
+    ListAdapter<ResponseRepository, RecyclerView.ViewHolder>(
+        ItemDiffCallback<ResponseRepository>(
             onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old == new }
         )) {
@@ -23,7 +23,7 @@ class GithubRepositoryListAdapter :
 
     class ProfileViewHolder(private val binding: ItemGithubRepositoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: RepositoryInfo) {
+        fun onBind(data: ResponseRepository) {
             binding.repository = data
         }
     }
