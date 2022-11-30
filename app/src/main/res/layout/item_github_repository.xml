@@ -7,7 +7,7 @@
 
         <variable
             name="repository"
-            type="org.sopt.sample.domain.entity.RepositoryInfo" />
+            type="org.sopt.sample.domain.entity.Repository" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

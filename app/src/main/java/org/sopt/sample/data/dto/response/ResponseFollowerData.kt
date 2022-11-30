@@ -2,7 +2,7 @@ package org.sopt.sample.data.dto.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.sopt.sample.domain.entity.FollowerInfo
+import org.sopt.sample.domain.entity.Follower
 
 @Serializable
 data class ResponseFollower(
@@ -27,8 +27,8 @@ data class ResponseFollower(
         @SerialName("last_name")
         val lastName: String,
     ) {
-        fun toFollowerInfo(follower: ResponseFollowerData): FollowerInfo =
-            FollowerInfo(follower.id,
+        fun toFollower(follower: ResponseFollowerData): Follower =
+            Follower(follower.id,
                 follower.profile,
                 follower.email,
                 follower.firstName,

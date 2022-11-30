@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.sample.databinding.ItemFollowerBinding
-import org.sopt.sample.domain.entity.FollowerInfo
+import org.sopt.sample.domain.entity.Follower
 import org.sopt.sample.util.ItemDiffCallback
 
 class FollowerListAdapter :
-    ListAdapter<FollowerInfo, FollowerListAdapter.FollowerViewHolder>(
-        ItemDiffCallback<FollowerInfo>(
+    ListAdapter<Follower, FollowerListAdapter.FollowerViewHolder>(
+        ItemDiffCallback<Follower>(
             onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old == new }
         )) {
@@ -19,7 +19,7 @@ class FollowerListAdapter :
 
     class FollowerViewHolder(private val binding: ItemFollowerBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: FollowerInfo) {
+        fun onBind(data: Follower) {
             binding.follower = data
         }
     }
