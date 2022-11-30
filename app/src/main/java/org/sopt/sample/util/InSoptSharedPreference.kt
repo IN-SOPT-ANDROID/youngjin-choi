@@ -38,16 +38,15 @@ class InSoptSharedPreference @Inject constructor(@ApplicationContext context: Co
 
     fun getUserInfo(): UserInfo? {
         with(dataStore) {
-            val name = getString(PREF_USER_ID, null)
-            val id = getString(PREF_USER_EMAIL, null)
-
+            val id = getString(PREF_USER_ID, null)
+            val email = getString(PREF_USER_EMAIL, null)
             // 유저 이름이 존재하지 않는 경우, 미가입자로 판단
-            if (name == null || id == null) return null
+            if (id == null || email == null) return null
 
             return UserInfo(
-                id,
+                email,
                 getString(PREF_USER_PASSWORD, null) ?: "",
-                name,
+                id,
                 safeValueOf<MbtiType>(getString(PREF_USER_MBTI, null))
             )
         }
