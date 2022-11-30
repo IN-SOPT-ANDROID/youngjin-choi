@@ -51,7 +51,6 @@ class SignViewModel @Inject constructor(
                 .matcher(pw).matches()
         }
 
-
     private fun checkValidSignInput(): Boolean {
         if (id.value.isNullOrBlank() || email.value.isNullOrBlank() || password.value.isNullOrBlank()) return false
         return Patterns.EMAIL_ADDRESS.matcher(email.value!!)
