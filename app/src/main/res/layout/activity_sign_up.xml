@@ -93,15 +93,26 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_id_label" />
 
                 <TextView
+                    android:id="@+id/tv_id_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingMicro"
+                    android:text="@string/sign_up_id_detail"
+                    android:textAppearance="@style/TextAppearance.Detail"
+                    app:layout_constraintEnd_toEndOf="@id/gl_end"
+                    app:layout_constraintStart_toStartOf="@id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@id/et_id" />
+
+                <TextView
                     android:id="@+id/tv_email_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacingBase"
+                    android:layout_marginTop="@dimen/spacing16"
                     android:text="@string/sign_email_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_id" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_id_detail" />
 
                 <EditText
                     android:id="@+id/et_email"
@@ -117,14 +128,25 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_email_label" />
 
                 <TextView
+                    android:id="@+id/tv_email_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingMicro"
+                    android:text="@string/sign_up_email_detail"
+                    android:textAppearance="@style/TextAppearance.Detail"
+                    app:layout_constraintEnd_toEndOf="@id/gl_end"
+                    app:layout_constraintStart_toStartOf="@id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@id/et_email" />
+
+                <TextView
                     android:id="@+id/tv_password_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacingBase"
+                    android:layout_marginTop="@dimen/spacing16"
                     android:text="@string/sign_password_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_email" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_email_detail" />
 
                 <EditText
                     android:id="@+id/et_password"
@@ -141,14 +163,25 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_password_label" />
 
                 <TextView
+                    android:id="@+id/tv_password_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingMicro"
+                    android:text="@string/sign_up_password_detail"
+                    android:textAppearance="@style/TextAppearance.Detail"
+                    app:layout_constraintEnd_toEndOf="@id/gl_end"
+                    app:layout_constraintStart_toStartOf="@id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+                <TextView
                     android:id="@+id/tv_mbti_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacingBase"
+                    android:layout_marginTop="@dimen/spacing16"
                     android:text="@string/sign_mbti_label"
                     android:textAppearance="@style/TextAppearance.TextView.Label"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@id/et_password" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_password_detail" />
 
                 <EditText
                     android:id="@+id/et_mbti"
