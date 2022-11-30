@@ -10,6 +10,7 @@ import org.sopt.sample.util.Event
 import org.sopt.sample.util.InSoptSharedPreference
 import org.sopt.sample.util.extensions.addSourceList
 import org.sopt.sample.util.safeLet
+import java.util.regex.Pattern
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,9 +19,9 @@ class SignViewModel @Inject constructor(
     private val authRepository: AuthRepository,
 ) :
     ViewModel() {
+    val id = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
-    val id = MutableLiveData<String>()
 
     var userInput: UserInfo? = null
 
@@ -33,6 +34,23 @@ class SignViewModel @Inject constructor(
     val isValidSignInput = MediatorLiveData<Boolean>().apply {
         addSourceList(email, password, id) { checkValidSignInput() }
     }
+
+    val isValidId: LiveData<Boolean>
+        get() = Transformations.map(id) { id ->
+            Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{6,10}$").matcher(id).matches()
+        }
+
+    val isValidEmail: LiveData<Boolean>
+        get() = Transformations.map(email) { email ->
+            Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        }
+
+    val isValidPassword: LiveData<Boolean>
+        get() = Transformations.map(password) { pw ->
+            Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{6,12}$")
+                .matcher(pw).matches()
+        }
+
 
     private fun checkValidSignInput(): Boolean {
         if (id.value.isNullOrBlank() || email.value.isNullOrBlank() || password.value.isNullOrBlank()) return false

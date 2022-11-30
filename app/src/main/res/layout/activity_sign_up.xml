@@ -206,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacingBase"
             android:layout_marginBottom="@dimen/spacingBase"
-            android:enabled="@{viewModel.isValidSignInput()}"
+            android:enabled="@{viewModel.isValidId() &amp;&amp; viewModel.isValidEmail() &amp;&amp; viewModel.isValidPassword()}"
             android:text="@string/sign_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
