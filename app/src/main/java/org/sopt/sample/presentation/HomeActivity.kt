@@ -19,28 +19,10 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         binding.lifecycleOwner = this
 
         initLayout()
-
-        /* TODO delete
-            [필수과제] 로그인 화면에서 입력된 정보 전달 받기, 2주차 과제 시 해당 주석은 삭제될 예정 */
-//        intent.getBundleExtra(ARG_USER_BUNDLE)?.let {
-//            val userInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//                it.getParcelable(ARG_USER_INFO, UserInfo::class.java)
-//            } else {
-//                it.getParcelable(ARG_USER_INFO)
-//            }
-//
-//            userInfo?.let { viewModel.setUserInfo(it) }
-//        }
     }
 
     private fun initLayout() {
         binding.tvGithub.movementMethod = LinkMovementMethod.getInstance()
         binding.tvBlog.movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    // TODO delete
-    companion object {
-        const val ARG_USER_BUNDLE = "userBundle"
-        const val ARG_USER_INFO = "userInfo"
     }
 }

@@ -71,19 +71,6 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     }
 
     private fun moveToHome() {
-        /* TODO delete
-          [필수과제] 로그인 화면에서 입력된 정보 전달 받기, 2주차 과제 시 해당 주석은 삭제될 예정 */
-
-//        val intent = Intent(this, HomeActivity::class.java).apply {
-//            Bundle().apply {
-//                putParcelable(ARG_USER_INFO, viewModel.userInput)
-//            }.also {
-//                putExtra(ARG_USER_BUNDLE, it)
-//            }
-//        }
-//
-//        startActivity(intent)
-
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
@@ -92,6 +79,5 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         private const val ARG_USER_INPUT = "userInput"
         private const val ARG_USER_INFO = "userInfo"
         private const val ARG_USER_PASSWORD = "userPassword"
-        const val ARG_USER_BUNDLE = "userBundle"
     }
 }
