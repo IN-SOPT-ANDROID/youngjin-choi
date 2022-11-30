@@ -28,11 +28,13 @@ data class ResponseFollower(
         val lastName: String,
     ) {
         fun toFollowerInfo(follower: ResponseFollowerData): FollowerInfo =
-            FollowerInfo(follower.id,
+            FollowerInfo(
+                follower.id,
                 follower.profile,
                 follower.email,
                 follower.firstName,
-                follower.lastName)
+                follower.lastName
+            )
     }
 
     @Serializable
