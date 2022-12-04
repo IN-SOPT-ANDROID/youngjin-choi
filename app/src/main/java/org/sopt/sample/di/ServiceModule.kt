@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.sopt.sample.data.service.AuthService
 import org.sopt.sample.data.service.FollowerService
+import org.sopt.sample.data.service.MusicService
 import org.sopt.sample.data.type.BaseUrlType
 import org.sopt.sample.di.NetworkModule.Retrofit2
 import retrofit2.Retrofit
@@ -18,6 +19,11 @@ object ServiceModule {
     @Provides
     fun provideAuthService(@Retrofit2(BaseUrlType.SOPT) retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMusicService(@Retrofit2(BaseUrlType.MUSIC) retrofit: Retrofit): MusicService =
+        retrofit.create(MusicService::class.java)
 
     @Singleton
     @Provides

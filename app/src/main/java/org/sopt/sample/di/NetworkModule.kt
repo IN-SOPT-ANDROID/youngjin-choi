@@ -45,6 +45,16 @@ object NetworkModule {
     @ExperimentalSerializationApi
     @Provides
     @Singleton
+    @Retrofit2(BaseUrlType.MUSIC)
+    fun provideMusicRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
+        .baseUrl(MUSIC_BASE_URL)
+        .client(client)
+        .addConverterFactory(json.asConverterFactory(requireNotNull("application/json".toMediaTypeOrNull())))
+        .build()
+
+    @ExperimentalSerializationApi
+    @Provides
+    @Singleton
     @Retrofit2(BaseUrlType.REQRES)
     fun provideReqResRetrofit(client: OkHttpClient, json: Json): Retrofit = Retrofit.Builder()
         .baseUrl(REQRES_BASE_URL)

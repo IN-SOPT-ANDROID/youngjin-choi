@@ -24,6 +24,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "SOPT_BASE_URL", properties["sopt.base.url"]
+        buildConfigField "String", "MUSIC_BASE_URL", properties["music.base.url"]
         buildConfigField "String", "REQRES_BASE_URL", properties["reqres.base.url"]
     }
 
