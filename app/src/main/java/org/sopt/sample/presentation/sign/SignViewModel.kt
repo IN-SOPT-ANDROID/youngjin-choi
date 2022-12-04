@@ -31,20 +31,13 @@ class SignViewModel @Inject constructor(
     val isCompletedSignUp: LiveData<Event<Boolean>> get() = _isCompletedSignUp
 
     val isValidId: LiveData<Boolean>
-        get() = Transformations.map(id) { id ->
-            Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{6,10}$").matcher(id).matches()
-        }
+        get() = Transformations.map(id) { id -> id?.matches(ID_PATTERN.toRegex()) }
 
     val isValidEmail: LiveData<Boolean>
-        get() = Transformations.map(email) { email ->
-            Patterns.EMAIL_ADDRESS.matcher(email).matches()
-        }
+        get() = Transformations.map(email) { email -> email?.matches(Patterns.EMAIL_ADDRESS.toRegex()) }
 
     val isValidPassword: LiveData<Boolean>
-        get() = Transformations.map(password) { pw ->
-            Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&.])[A-Za-z[0-9]$@$!%*#?&.]{6,12}$")
-                .matcher(pw).matches()
-        }
+        get() = Transformations.map(password) { pw -> pw?.matches(PASSWORD_PATTERN.toRegex()) }
 
     fun signUp() {
         viewModelScope.launch {
@@ -70,5 +63,11 @@ class SignViewModel @Inject constructor(
         email.value = userInput.email
         mbti.value = userInput.mbti
         this.password.value = password
+    }
+
+    companion object {
+        private const val ID_PATTERN = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{6,10}\$"
+        private const val PASSWORD_PATTERN =
+            "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{6,12}\$"
     }
 }
