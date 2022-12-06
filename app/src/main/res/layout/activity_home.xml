@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacingBase"
                     android:fontFamily="@font/suit_b"
-                    android:text="@{viewModel.user.name}"
+                    android:text="@{viewModel.user.id}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/typographyTitle"
                     app:layout_constraintEnd_toEndOf="parent"
