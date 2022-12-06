@@ -119,4 +119,10 @@
         <item name="android:textColor">@color/gray_500</item>
         <item name="android:fontFamily">@font/suit_r</item>
     </style>
+
+    <style name="TextAppearance.Detail" parent="">
+        <item name="android:textSize">@dimen/typographyDescription</item>
+        <item name="android:textColor">@color/pink_500</item>
+        <item name="android:fontFamily">@font/suit_r</item>
+    </style>
 </resources>

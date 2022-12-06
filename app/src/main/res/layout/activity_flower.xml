@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="org.sopt.sample.presentation.types.ProcessState" />
+
+        <variable
+            name="viewModel"
+            type="org.sopt.sample.presentation.follower.FollowerViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,6 +36,19 @@
             style="@style/Style.Divider.Basic"
             android:layout_width="match_parent"
             app:layout_constraintTop_toBottomOf="@id/tv_follower_title" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lv_loading"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_follower_list"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_spin"
+            app:visibility="@{viewModel.loadingState == ProcessState.IN_PROGRESS}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_follower_list"

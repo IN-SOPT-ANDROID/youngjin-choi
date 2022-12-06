@@ -8,8 +8,7 @@ import org.sopt.sample.presentation.types.SoptPartType
 @Parcelize
 data class UserInfo(
     val email: String,
-    val password: String,
-    val name: String,
+    val id: String? = "oznnni",
     val mbti: MbtiType? = null,
     val age: Int = 24,
     val part: SoptPartType = SoptPartType.AOS,

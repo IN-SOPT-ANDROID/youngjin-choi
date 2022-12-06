@@ -27,37 +27,38 @@ class InSoptSharedPreference @Inject constructor(@ApplicationContext context: Co
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
 
-    fun setUserInfo(user: UserInfo) {
+    fun setUserInfo(id: String?, email: String, mbti: MbtiType?) {
         dataStore.edit().run {
-            putString(PREF_USER_ID, user.email)
-            putString(PREF_USER_PASSWORD, user.password)
-            putString(PREF_USER_NAME, user.name)
-            putString(PREF_USER_MBTI, user.mbti.toString())
+            mbti?.let { putString(PREF_USER_MBTI, it.name) }
+            putString(PREF_USER_EMAIL, email)
+            putString(PREF_USER_ID, id)
         }.apply()
     }
 
     fun getUserInfo(): UserInfo? {
         with(dataStore) {
-            val name = getString(PREF_USER_NAME, null)
             val id = getString(PREF_USER_ID, null)
+            val email = getString(PREF_USER_EMAIL, null) ?: return null // 유저 이메일이 존재하지 않는 경우, 미가입자로 판단
+            val mbti = safeValueOf<MbtiType>(getString(PREF_USER_MBTI, null))
 
-            // 유저 이름이 존재하지 않는 경우, 미가입자로 판단
-            if (name == null || id == null) return null
-
-            return UserInfo(
-                id,
-                getString(PREF_USER_PASSWORD, null) ?: "",
-                name,
-                safeValueOf<MbtiType>(getString(PREF_USER_MBTI, null))
-            )
+            return if (id == null)
+                UserInfo(
+                    email = email,
+                    mbti = mbti
+                )
+            else
+                UserInfo(
+                    id = id,
+                    email = email,
+                    mbti = mbti
+                )
         }
     }
 
     companion object {
         private const val FILE_NAME = "IN-SOPT"
+        private const val PREF_USER_EMAIL = "userEmail"
         private const val PREF_USER_ID = "userId"
-        private const val PREF_USER_PASSWORD = "userPassword"
-        private const val PREF_USER_NAME = "userName"
         private const val PREF_USER_MBTI = "userMbti"
     }
 }

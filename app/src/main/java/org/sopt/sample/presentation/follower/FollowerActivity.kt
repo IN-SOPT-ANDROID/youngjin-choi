@@ -6,7 +6,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
 import org.sopt.sample.base.BindingActivity
 import org.sopt.sample.databinding.ActivityFlowerBinding
-import org.sopt.sample.util.EventObserver
 
 @AndroidEntryPoint
 class FollowerActivity : BindingActivity<ActivityFlowerBinding>(R.layout.activity_flower) {
@@ -15,6 +14,8 @@ class FollowerActivity : BindingActivity<ActivityFlowerBinding>(R.layout.activit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         initLayout()
         addObservers()
@@ -25,8 +26,8 @@ class FollowerActivity : BindingActivity<ActivityFlowerBinding>(R.layout.activit
     }
 
     private fun addObservers() {
-        viewModel.followers.observe(this, EventObserver {
+        viewModel.followers.observe(this) {
             adapter.submitList(it?.toMutableList())
-        })
+        }
     }
 }
