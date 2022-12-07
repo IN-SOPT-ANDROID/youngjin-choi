@@ -77,6 +77,11 @@
         <item name="cornerSize">12%</item>
     </style>
 
+    <style name="Style.CircleImageView.Radius.6" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6%</item>
+    </style>
+
     <!-- TextAppearance -->
     <style name="TextAppearance.TextView.Label" parent="">
         <item name="android:textSize">@dimen/typographyDescription</item>
@@ -99,7 +104,7 @@
     <style name="TextAppearance.Toolbar.Title" parent="">
         <item name="android:textSize">@dimen/typographyBase</item>
         <item name="android:textColor">@color/gray_500</item>
-        <item name="android:fontFamily">@font/suit_sb</item>
+        <item name="android:fontFamily">@font/suit_b</item>
     </style>
 
     <style name="TextAppearance.Title.Basic" parent="">

@@ -7,5 +7,5 @@ data class ResponseUploadMusic(
     val statusCode: Int,
     val success: Boolean,
     val message: String,
-    val data: List<ResponseMusic>?,
+    val data: ResponseMusic?,
 )
