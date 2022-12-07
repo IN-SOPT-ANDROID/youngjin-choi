@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
 import org.sopt.sample.base.BindingActivity
 import org.sopt.sample.databinding.ActivityMusicPostingBinding
+import org.sopt.sample.util.extensions.showKeyboard
 import org.sopt.sample.util.extensions.showToast
 
 @AndroidEntryPoint
@@ -44,7 +45,7 @@ class MusicPostingActivity :
             storagePermission.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
         binding.ivKeyboard.setOnClickListener {
-            // TODO 키보드 숨기기
+            showKeyboard(it, false)
         }
         binding.btnBack.setOnClickListener {
             finish()
