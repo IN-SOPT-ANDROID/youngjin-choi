@@ -53,6 +53,10 @@ class PlaylistActivity : BindingActivity<ActivityPlaylistBinding>(R.layout.activ
         binding.fabPosting.setOnClickListener {
             launcher.launch(Intent(this, MusicPostingActivity::class.java))
         }
+        binding.layoutRefresh.setOnRefreshListener {
+            viewModel.fetchMusicList()
+            binding.layoutRefresh.isRefreshing = false
+        }
     }
 
     private fun addObservers() {
