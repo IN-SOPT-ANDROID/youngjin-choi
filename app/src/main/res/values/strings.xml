@@ -2,6 +2,9 @@
     <string name="app_name">INSOPTAndroidPractice</string>
     <string name="in_sopt">IN SOPT</string>
 
+    <!-- General -->
+    <string name="complete">완료</string>
+
     <!-- Menu -->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -45,6 +48,16 @@
 
     <!-- Follower -->
     <string name="follower_title">Followers</string>
+
+    <!-- Music -->
+    <string name="music_singer">가수</string>
+    <string name="music_title">타이틀</string>
+    <string name="music_playlist_title">%s님의 플레이리스트</string>
+    <string name="music_posting_title">음악 추가하기</string>
+    <string name="music_posting_singer_hint">가수명을 입력해 주세요.</string>
+    <string name="music_posting_title_hint">타이틀을 입력해 주세요.</string>
+    <string name="music_posting_success_toast_message">플레이리스트에 음악을 추가했습니다 🎧</string>
+    <string name="music_posting_failure_toast_message">앗, 음악을 추가할 수 없어요! 잠시후 다시 시도해 주세요.</string>
 
     <!-- Part -->
     <string name="part_aos">Android</string>

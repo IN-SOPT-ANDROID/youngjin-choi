@@ -3,7 +3,6 @@ package org.sopt.sample.presentation.sign
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.core.os.bundleOf
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.sample.R
 import org.sopt.sample.base.BindingActivity
@@ -50,21 +49,20 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     }
 
     private fun moveToSignIn() {
-        val intent = Intent(this, SignInActivity::class.java)
-        with(binding) {
-            intent.putExtra(ARG_USER_INPUT, bundleOf(
-                ARG_USER_INFO to UserInfo(email = etEmail.text.toString(),
+        val intent = Intent(this, SignInActivity::class.java).apply {
+            with(binding) {
+                putExtra(ARG_USER_INFO, UserInfo(email = etEmail.text.toString(),
                     id = etId.text.toString(),
-                    mbti = safeValueOf<MbtiType>(etMbti.text.toString().uppercase())),
-                ARG_USER_PASSWORD to etPassword.text.toString()
-            ))
+                    mbti = safeValueOf<MbtiType>(etMbti.text.toString().uppercase())))
+
+                putExtra(ARG_USER_PASSWORD, etPassword.text.toString())
+            }
         }
         setResult(RESULT_OK, intent)
         finish()
     }
 
     companion object {
-        private const val ARG_USER_INPUT = "userInput"
         private const val ARG_USER_INFO = "userInfo"
         private const val ARG_USER_PASSWORD = "userPassword"
     }

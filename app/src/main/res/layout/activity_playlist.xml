@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.sopt.sample.presentation.music.MusicViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/layout_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.music.PlaylistActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_follower_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/suit_b"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/spacingBase"
+                android:paddingVertical="@dimen/spacing14"
+                android:text="@{@string/music_playlist_title(viewModel.nickname)}"
+                android:textColor="@color/gray_700"
+                android:textSize="@dimen/typographyTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="영진님의 플레이리스트" />
+
+            <View
+                android:id="@+id/view_divider"
+                style="@style/Style.Divider.Basic"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_follower_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_playlist"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/spacingSmall"
+                android:paddingBottom="@dimen/spacing12"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view_divider"
+                tools:listitem="@layout/item_music" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_posting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacingBase"
+                android:src="@drawable/ic_plus"
+                app:backgroundTint="@color/gray_700"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:maxImageSize="28dp"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
